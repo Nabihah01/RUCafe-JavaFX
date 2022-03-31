@@ -1,5 +1,7 @@
 package com.example.project4;
 
+import java.util.ArrayList;
+
 /**
  * An instance of this class is a menu item in an order.
  * This class must extend MenuItem class and implement the Customizable interface above to
@@ -12,6 +14,22 @@ package com.example.project4;
  * therefore a Grande black coffee is $2.49, and a Grande coffee with cream and syrup would be $3.09.
  */
 public class Coffee extends MenuItem implements Customizable{
+    private String cupSize;
+    private ArrayList<String> addIns;
+    private int quantity;
+    public Coffee(String cupSize,ArrayList<String> addIns, int quantity){
+        this.cupSize = cupSize;
+        this.addIns = addIns;
+        this.quantity = quantity;
+    }
+
+    public String getCupSize() {
+        return cupSize;
+    }
+
+    public ArrayList<String> getAddIns() {
+        return addIns;
+    }
 
     @Override
     public double itemPrice(){
@@ -20,11 +38,39 @@ public class Coffee extends MenuItem implements Customizable{
 
     @Override
     public boolean add(Object obj) {
+        if(obj instanceof String){
+            String addIn = (String) obj;
+            addIns.add(addIn);
+            return true;
+        }
         return false;
     }
 
     @Override
     public boolean remove(Object obj) {
+        if(obj instanceof String){
+            String addIn = (String) obj;
+            addIns.remove(addIn);
+            return true;
+        }
         return false;
+    }
+
+    @Override
+    public String toString(){
+        if(!addIns.isEmpty()){
+            return this.cupSize + " coffee with " + String.join(", ", this.addIns) +
+                    "(" + this.quantity + ")";
+        }
+        else {
+            return this.cupSize + " black coffee " + "(" + this.quantity + ")";
+        }
+
+    }
+
+    public static void main(String []args){
+        ArrayList <String> addIns = new ArrayList<>();
+        Coffee coffee = new Coffee("Tall",addIns, 1);
+        System.out.println(coffee.toString());
     }
 }

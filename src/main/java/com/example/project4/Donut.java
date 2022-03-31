@@ -7,18 +7,46 @@ package com.example.project4;
  */
 public class Donut extends MenuItem{
     private String donutType;
-    public Donut(String donut){
-        this.donutType = donut;
+    private int donutQuantity;
+    private String donutFlavor;
+    private static final double YEAST = 1.59;
+    private static final double CAKE = 1.79;
+    private static final double HOLE = 0.39;
+    public Donut(String donutType, String donutFlavor, int donutQuantity){
+        this.donutType = donutType;
+        this.donutQuantity = donutQuantity;
+        this.donutFlavor = donutFlavor;
     }
     @Override
     public double itemPrice(){
         if(donutType.equals("yeast")){
-            return 1.59;
+            return YEAST;
         } else if (donutType.equals("cake")) {
-            return 1.79;
+            return CAKE;
         }
         else{
-            return 0.39;
+            return HOLE;
         }
+    }
+
+    public String getDonutType() {
+        return donutType;
+    }
+
+    public String getDonutFlavor() {
+        return donutFlavor;
+    }
+
+    public int getDonutQuantity() {
+        return donutQuantity;
+    }
+
+    @Override
+    public String toString(){
+        return this.donutFlavor + " " + this.donutType + " donut " + "(" + this.donutQuantity + ")";
+    }
+    public static void main(String []args){
+        Donut donut = new Donut("cake","strawberry", 1);
+        System.out.println(donut.toString());
     }
 }

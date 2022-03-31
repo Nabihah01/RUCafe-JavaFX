@@ -5,5 +5,7 @@ package com.example.project4;
  * Any class defined for a menu item must extend this class
  */
 public abstract class MenuItem {
+    public MenuItem(){
+    }
     public abstract double itemPrice();
 }
