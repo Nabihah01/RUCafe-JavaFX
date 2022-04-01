@@ -2,6 +2,7 @@ package com.example.project4;
 
 import java.util.ArrayList;
 
+// this is for one individual order. list of all items user ordered and the order number for the user.
 /**
  *  An instance of this class has a unique order number
  *  and keeps the list of menu items added by the user.
@@ -11,10 +12,12 @@ import java.util.ArrayList;
 public class Order implements Customizable{
     private ArrayList<MenuItem> orders;
     private int orderNumber;
+
     public Order(ArrayList<MenuItem> orders, int orderNumber){
         this.orders = orders;
         this.orderNumber = orderNumber;
     }
+
     @Override
     public boolean add(Object obj) {
         if(obj instanceof MenuItem){

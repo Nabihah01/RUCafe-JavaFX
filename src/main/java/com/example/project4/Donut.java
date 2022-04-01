@@ -12,6 +12,7 @@ public class Donut extends MenuItem{
     private static final double YEAST = 1.59;
     private static final double CAKE = 1.79;
     private static final double HOLE = 0.39;
+
     public Donut(String donutType, String donutFlavor, int donutQuantity){
         this.donutType = donutType;
         this.donutQuantity = donutQuantity;

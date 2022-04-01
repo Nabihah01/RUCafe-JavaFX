@@ -32,8 +32,26 @@ public class Coffee extends MenuItem implements Customizable{
     }
 
     @Override
-    public double itemPrice(){
-        return 0;
+    public double itemPrice() {
+        int price = 0;
+        int addIn = addIns.size();
+        price += addIn * 0.30;
+
+        switch (cupSize) {
+            case "Short":
+                price += 1.69;
+                break;
+            case "Tall":
+                price += 2.09;
+                break;
+            case "Grande":
+                price += 2.49;
+                break;
+            case "Venti":
+                price += 2.89;
+                break;
+        }
+        return price;
     }
 
     @Override
