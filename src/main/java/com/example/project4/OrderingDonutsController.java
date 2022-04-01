@@ -30,7 +30,7 @@ public class OrderingDonutsController {
     }
 
     @FXML
-    void addToOrder(ActionEvent event) {
+    void donutAddToOrder(ActionEvent event) {
 
     }
 

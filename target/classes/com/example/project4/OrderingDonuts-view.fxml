@@ -10,8 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project4.OrderingDonutsView">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project4.OrderingDonutsController">
    <children>
       <Label layoutX="36.0" layoutY="20.0" text="Ordering Donuts">
          <font>
@@ -43,7 +42,7 @@
          </font>
       </Label>
       <TextField fx:id="subtotal" editable="false" layoutX="261.0" layoutY="355.0" prefHeight="23.0" prefWidth="150.0" />
-      <Button layoutX="480.0" layoutY="353.0" mnemonicParsing="false" onAction="#addToOrder" text="Add to Order">
+      <Button layoutX="480.0" layoutY="353.0" mnemonicParsing="false" onAction="#donutAddToOrder" text="Add to Order">
          <font>
             <Font name="Gill Sans MT" size="15.0" />
          </font>

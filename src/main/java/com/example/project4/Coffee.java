@@ -33,7 +33,7 @@ public class Coffee extends MenuItem implements Customizable{
 
     @Override
     public double itemPrice() {
-        int price = 0;
+        double price = 0;
         int addIn = addIns.size();
         price += addIn * 0.30;
 
