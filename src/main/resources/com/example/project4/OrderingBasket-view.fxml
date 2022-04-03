@@ -1,14 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.project4.OrderingBasketView"
-            prefHeight="400.0" prefWidth="600.0">
 
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project4.OrderingBasketController">
+   <children>
+      <Label layoutX="45.0" layoutY="36.0" text="Your Orders">
+         <font>
+            <Font size="34.0" />
+         </font>
+      </Label>
+      <Label layoutX="345.0" layoutY="39.0" text="Sub-Total:" />
+      <Label layoutX="347.0" layoutY="69.0" text="Sales Tax:" />
+      <Label layoutX="369.0" layoutY="101.0" text="Total:" />
+      <TextField fx:id="orderSalesTax" layoutX="432.0" layoutY="65.0" />
+      <TextField fx:id="orderTotal" layoutX="432.0" layoutY="97.0" />
+      <TextField fx:id="orderSubTotal" layoutX="432.0" layoutY="35.0" />
+      <ListView fx:id="userOrders" layoutX="45.0" layoutY="140.0" prefHeight="203.0" prefWidth="509.0" />
+      <Button layoutX="158.0" layoutY="351.0" mnemonicParsing="false" onAction="#removeSelectedItem" text="Remove Selected Item" />
+      <Button layoutX="345.0" layoutY="351.0" mnemonicParsing="false" onAction="#placeUserOrder" text="Place Order" />
+   </children>
 </AnchorPane>
