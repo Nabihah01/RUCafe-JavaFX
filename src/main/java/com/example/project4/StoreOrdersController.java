@@ -18,6 +18,10 @@ public class StoreOrdersController {
     @FXML
     private ListView<MenuItem> storeOrdersList;
 
+    void initialize() {
+        //show first order by default
+    }
+
     @FXML
     void cancelStoreOrder(ActionEvent event) {
         MenuItem item = storeOrdersList.getSelectionModel().getSelectedItem();
@@ -33,10 +37,12 @@ public class StoreOrdersController {
 
     void selectOrderNumber() {
         //from storeOrders array in storeOrder class, find correct order.
-        //display it to listView
-        //calculate total
-        //show first order by default
+        Integer orderNum = storeOrderNumber.getSelectionModel().getSelectedItem();
 
+        //display it to listView
+        
+
+        //calculate total
         Double total = 0.0;
         ObservableList<MenuItem> order = storeOrdersList.getItems();
         for(MenuItem m: order) {

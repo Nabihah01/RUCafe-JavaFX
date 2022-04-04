@@ -20,6 +20,10 @@ public class OrderingBasketController {
     @FXML
     private ListView<MenuItem> userOrders;
 
+    void initialize() {
+        displayAmounts();
+    }
+
     @FXML
     void placeUserOrder(ActionEvent event) {
         //add it to store orders array
@@ -34,8 +38,6 @@ public class OrderingBasketController {
         orderTotal.setText(total.toString());
     }
 
-    //not sure when or where to call this method so that sales tax is being displayed when user navigates to order
-    //basket screen. same with subtotal and total
     void displayAmounts() {
         Double subtotal = 0.0;
         ObservableList<MenuItem> order = userOrders.getItems();
