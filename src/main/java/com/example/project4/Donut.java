@@ -20,13 +20,13 @@ public class Donut extends MenuItem{
     }
     @Override
     public double itemPrice(){
-        if(donutType.equals("yeast")){
-            return YEAST;
-        } else if (donutType.equals("cake")) {
-            return CAKE;
+        if(donutType.equals("Yeast")){
+            return YEAST * donutQuantity;
+        } else if (donutType.equals("Cake")) {
+            return CAKE * donutQuantity;
         }
         else{
-            return HOLE;
+            return HOLE * donutQuantity;
         }
     }
 
@@ -44,7 +44,11 @@ public class Donut extends MenuItem{
 
     @Override
     public String toString(){
-        return this.donutFlavor + " " + this.donutType + " donut " + "(" + this.donutQuantity + ")";
+        if(donutType.equals("Donut Holes")) {
+            return this.donutFlavor + " " + this.donutType + "(" + this.donutQuantity + ")";
+        } else {
+            return this.donutFlavor + " " + this.donutType + " donut " + "(" + this.donutQuantity + ")";
+        }
     }
     public static void main(String []args){
         Donut donut = new Donut("cake","strawberry", 1);

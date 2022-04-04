@@ -51,7 +51,7 @@ public class Coffee extends MenuItem implements Customizable{
                 price += 2.89;
                 break;
         }
-        return price;
+        return price * quantity;
     }
 
     @Override
