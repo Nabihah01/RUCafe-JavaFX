@@ -35,7 +35,7 @@ public class StoreOrdersController {
         //from storeOrders array in storeOrder class, find correct order.
         //display it to listView
         //calculate total
-        //should we show first order by default?
+        //show first order by default
 
         Double total = 0.0;
         ObservableList<MenuItem> order = storeOrdersList.getItems();

@@ -23,7 +23,7 @@ public class OrderingBasketController {
     @FXML
     void placeUserOrder(ActionEvent event) {
         //add it to store orders array
-        //clear List View?
+        //clear List View
     }
 
     @FXML
@@ -46,7 +46,7 @@ public class OrderingBasketController {
 
         Double salesTax = (6.625 / 100) * Double.parseDouble(orderSubTotal.getText());
         orderSalesTax.setText(salesTax.toString());
-        
+
         Double total = Double.parseDouble(orderSubTotal.getText()) - salesTax;
         orderTotal.setText(total.toString());
 

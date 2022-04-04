@@ -9,7 +9,8 @@ import java.util.ArrayList;
  *  This class must implement the Customizable interface above,
  *  to provide the behavior of adding and removing menu items
  */
-public class Order implements Customizable{
+public class Order implements Customizable {
+    //should we add orderTotal?
     private ArrayList<MenuItem> orders;
     private int orderNumber;
 
