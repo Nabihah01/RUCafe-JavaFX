@@ -22,9 +22,8 @@
             <Font size="15.0" />
          </font>
       </CheckBox>
-      <ChoiceBox fx:id="coffeeSize" layoutX="404.0" layoutY="144.0" onMouseClicked="#setSizeChoiceBox" prefWidth="150.0" />
-      <ChoiceBox fx:id="coffeeQuantity" layoutX="404.0" layoutY="197.0" onMouseClicked="#setQuantityChoiceBox" prefWidth="150.0" />
-      <CheckBox fx:id="whipped" layoutX="59.0" layoutY="236.0" mnemonicParsing="false" text="Whipped Cream">
+      <ComboBox fx:id="coffeeSize" layoutX="400.0" layoutY="146.0" onAction="#sizeSelected" prefWidth="150.0" promptText="Short" />
+      <CheckBox fx:id="whipped" layoutX="59.0" layoutY="236.0" mnemonicParsing="false" onAction="#whippedSelected" text="Whipped Cream">
          <font>
             <Font size="15.0" />
          </font>
@@ -54,7 +53,7 @@
             <Font size="15.0" />
          </font>
       </Label>
-      <TextField fx:id="coffeeTotal" editable="false" layoutX="404.0" layoutY="278.0" />
+      <TextField fx:id="coffeeTotal" editable="false" layoutX="404.0" layoutY="278.0" text="1.69" />
       <Button layoutX="421.0" layoutY="343.0" mnemonicParsing="false" onAction="#coffeeAddtoOrder" text="Add to Order">
          <font>
             <Font size="15.0" />
@@ -65,5 +64,6 @@
             <Image url="@images/coffeewindow.jpg" />
          </image>
       </ImageView>
+      <ComboBox fx:id="coffeeQuantity" layoutX="400.0" layoutY="197.0" onAction="#quantitySelected" prefWidth="150.0" promptText="1" />
    </children>
 </AnchorPane>

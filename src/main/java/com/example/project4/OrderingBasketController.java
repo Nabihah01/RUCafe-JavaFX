@@ -3,6 +3,7 @@ package com.example.project4;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 
@@ -20,14 +21,23 @@ public class OrderingBasketController {
     @FXML
     private ListView<MenuItem> userOrders;
 
+    @FXML
     void initialize() {
-        displayAmounts();
+        //display your order
+        userOrders.setItems((ObservableList<MenuItem>) MainController.yourOrder.getOrders());
+        //display your order total
+        displayYourOrderTotal();
     }
 
     @FXML
     void placeUserOrder(ActionEvent event) {
         //add it to store orders array
-        //clear List View
+        MainController.orderNum++;
+        //add order number to combo box in store order
+        // get combo box from store orders and update it
+
+        MainController.storeOrders.add(MainController.yourOrder);
+        userOrders.getItems().clear();
     }
 
     @FXML
@@ -38,7 +48,7 @@ public class OrderingBasketController {
         orderTotal.setText(total.toString());
     }
 
-    void displayAmounts() {
+    void displayYourOrderTotal() {
         Double subtotal = 0.0;
         ObservableList<MenuItem> order = userOrders.getItems();
         for(MenuItem m: order) {

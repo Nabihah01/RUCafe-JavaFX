@@ -1,25 +1,30 @@
 package com.example.project4;
 
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 
 import java.util.ArrayList;
 
 public class OrderingDonutsController {
-    int orderNumber = 1;
+    @FXML
+    private ComboBox<String> donutFlavors;
+    protected ObservableList<String> flavors = FXCollections.observableArrayList(
+            "Chocolate", "Glazed", "Jelly", "Old-Fashioned");
 
     @FXML
-    private ChoiceBox<String> donutFlavors;
+    private ComboBox<Integer> donutQuantity;
+    protected ObservableList<Integer> quantity = FXCollections.observableArrayList(
+            1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12);
 
     @FXML
-    private ChoiceBox<Integer> donutQuantity;
-
-    @FXML
-    private ChoiceBox<String> donutTypes;
+    private ComboBox<String> donutTypes;
+    protected ObservableList<String> types = FXCollections.observableArrayList(
+            "Yeast", "Donut Holes", "Cake");
 
     @FXML
     private ListView<MenuItem> orderList;
@@ -27,6 +32,12 @@ public class OrderingDonutsController {
     @FXML
     private TextField subtotal;
 
+    @FXML
+    void initialize() {
+        donutTypes.setItems(types);
+        donutQuantity.setItems(quantity);
+        donutFlavors.setItems(flavors);
+    }
 
     @FXML
     void removeSelected() {
@@ -46,35 +57,22 @@ public class OrderingDonutsController {
         orderList.getItems().add(donut);
         Double total = donut.itemPrice() + Double.parseDouble(subtotal.getText());
         subtotal.setText(total.toString());
+
+        donutFlavors.getSelectionModel().clearSelection();
+        donutQuantity.getSelectionModel().clearSelection();
+        donutTypes.getSelectionModel().clearSelection();
     }
 
     @FXML
     void donutAddToOrder(ActionEvent event) {
-        ArrayList<MenuItem> orderArray = (ArrayList<MenuItem>) orderList.getItems();
-        Order orders = new Order(orderArray, orderNumber);
-        orderNumber++;
-        //create an orderArray by getting items from list view
-        //have a global variable for order number?
-        //does order number start from 1 again in coffee window?
-        //using orderArray and orderNumber, create Order variable
-        //add it to ArrayList for Ordering Basket and for Store Orders?
-    }
-
-    @FXML
-    void setFlavorChoiceBox() {
-        donutFlavors.setItems(FXCollections.observableArrayList(
-                "Chocolate", "Glazed", "Jelly", "Old-Fashioned"));
-    }
-
-    @FXML
-    void setTypeChoiceBox() {
-        donutTypes.setItems(FXCollections.observableArrayList(
-                "Yeast", "Donut Holes", "Cake"));
-    }
-
-    @FXML
-    void setQuantityChoiceBox() {
-        donutQuantity.setItems(FXCollections.observableArrayList(
-                1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12));
+        ObservableList<MenuItem> order = orderList.getItems();
+        for(int i = 0; i < order.size(); i++) {
+            MainController.yourOrder.getOrders().add(order.get(i));
+        }
+        orderList.getItems().clear();
+        donutFlavors.getSelectionModel().clearSelection();
+        donutQuantity.getSelectionModel().clearSelection();
+        donutTypes.getSelectionModel().clearSelection();
+        subtotal.clear();
     }
 }

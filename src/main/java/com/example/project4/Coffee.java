@@ -17,7 +17,7 @@ public class Coffee extends MenuItem implements Customizable{
     private String cupSize;
     private ArrayList<String> addIns;
     private int quantity;
-    public Coffee(String cupSize,ArrayList<String> addIns, int quantity){
+    public Coffee(String cupSize, ArrayList<String> addIns, int quantity){
         this.cupSize = cupSize;
         this.addIns = addIns;
         this.quantity = quantity;

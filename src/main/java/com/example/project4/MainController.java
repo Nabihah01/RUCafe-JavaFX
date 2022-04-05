@@ -8,7 +8,15 @@ import javafx.scene.control.Label;
 import javafx.event.ActionEvent;
 import javafx.stage.Stage;
 
+import java.util.ArrayList;
+
 public class MainController {
+    //stores a user's orders
+    static ArrayList<MenuItem> order = new ArrayList<>();
+    static int orderNum = 1;
+    static Order yourOrder = new Order(order, orderNum);
+
+    static StoreOrders storeOrders = new StoreOrders(new ArrayList<>());
 
     @FXML
      void orderCoffee(ActionEvent event) {

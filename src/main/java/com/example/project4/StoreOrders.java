@@ -13,6 +13,10 @@ public class StoreOrders implements Customizable {
         this.storeOrders = storeOrders;
     }
 
+    public ArrayList<Order> getStoreOrders() {
+        return storeOrders;
+    }
+
     @Override
     public boolean add(Object obj) {
         if(obj instanceof Order){

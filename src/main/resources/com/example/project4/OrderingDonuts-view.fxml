@@ -12,7 +12,7 @@
             <Font name="Lucida Handwriting Italic" size="34.0" />
          </font>
       </Label>
-      <Label layoutX="36.0" layoutY="118.0" prefHeight="30.0" prefWidth="88.0" text="Donut Type">
+      <Label layoutX="36.0" layoutY="130.0" prefHeight="30.0" prefWidth="88.0" text="Donut Type">
          <font>
             <Font name="Gill Sans MT Condensed" size="24.0" />
          </font>
@@ -22,14 +22,14 @@
             <Font name="Gill Sans MT Condensed" size="24.0" />
          </font>
       </Label>
-      <ChoiceBox fx:id="donutTypes" layoutX="150.0" layoutY="121.0" onMouseClicked="#setTypeChoiceBox" prefWidth="150.0" />
-      <ChoiceBox fx:id="donutFlavors" layoutX="150.0" layoutY="175.0" onMouseClicked="#setFlavorChoiceBox" prefWidth="150.0" />
+      <ComboBox fx:id="donutQuantity" layoutX="148.0" layoutY="228.0" prefHeight="13.0" prefWidth="58.0" />
+      <ComboBox fx:id="donutFlavors" layoutX="148.0" layoutY="175.0" prefHeight="25.0" prefWidth="150.0" />
+      <ComboBox fx:id="donutTypes" layoutX="148.0" layoutY="132.0" prefHeight="23.0" prefWidth="150.0" />
       <Label layoutX="36.0" layoutY="226.0" prefHeight="30.0" prefWidth="88.0" text="Quantity">
          <font>
             <Font name="Gill Sans MT Condensed" size="24.0" />
          </font>
       </Label>
-      <ChoiceBox fx:id="donutQuantity" layoutX="150.0" layoutY="228.0" onMouseClicked="#setQuantityChoiceBox" prefHeight="25.0" prefWidth="50.0" />
       <ListView fx:id="orderList" layoutX="375.0" layoutY="96.0" prefHeight="184.0" prefWidth="191.0" />
       <Label layoutX="80.0" layoutY="355.0" text="sub-total">
          <font>
