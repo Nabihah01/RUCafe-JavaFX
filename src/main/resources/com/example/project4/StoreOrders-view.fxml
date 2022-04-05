@@ -20,7 +20,7 @@
       <TextField fx:id="storeOrderTotal" editable="false" layoutX="418.0" layoutY="80.0" />
       <Button layoutX="166.0" layoutY="353.0" mnemonicParsing="false" onAction="#cancelStoreOrder" text="Cancel Order" />
       <Button layoutX="373.0" layoutY="353.0" mnemonicParsing="false" onAction="#exportStoreOrders" text="Export Orders" />
-      <ComboBox fx:id="storeOrderNumber" layoutX="132.0" layoutY="80.0" prefHeight="17.0" prefWidth="67.0" />
+      <ComboBox fx:id="storeOrderNumber" layoutX="132.0" layoutY="80.0" onAction="#selectOrderNumber" prefHeight="17.0" prefWidth="67.0" />
       <Label layoutX="38.0" layoutY="80.0" text=" Order Num:">
          <font>
             <Font size="16.0" />

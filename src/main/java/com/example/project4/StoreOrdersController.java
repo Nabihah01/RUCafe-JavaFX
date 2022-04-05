@@ -48,6 +48,7 @@ public class StoreOrdersController {
 
     }
 
+    @FXML
     void selectOrderNumber() {
         //from storeOrders array in storeOrder class, find correct order.
         Integer orderNum = storeOrderNumber.getSelectionModel().getSelectedItem();
