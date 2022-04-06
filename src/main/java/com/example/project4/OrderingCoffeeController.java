@@ -4,6 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
@@ -164,6 +165,10 @@ public class OrderingCoffeeController {
         coffeeSize.setValue("Short");
         coffeeQuantity.setValue(1);
         coffeeTotal.setText("1.69");
+
+        Alert a = new Alert(Alert.AlertType.CONFIRMATION);
+        a.setHeaderText("Coffee Order Placed");
+        a.show();
 
     }
 
