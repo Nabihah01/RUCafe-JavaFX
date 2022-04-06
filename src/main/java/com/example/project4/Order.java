@@ -13,6 +13,9 @@ public class Order implements Customizable {
     //should we add orderTotal?
     private ArrayList<MenuItem> orders;
     private int orderNumber;
+    private double total;
+    private double salesTax;
+    private double subTotal;
 
     public Order(ArrayList<MenuItem> orders, int orderNumber){
         this.orders = orders;
@@ -45,6 +48,14 @@ public class Order implements Customizable {
 
     public int getOrderNumber() {
         return orderNumber;
+    }
+
+    public void setTotal(double total) {
+        this.total = total;
+    }
+
+    public double getTotal() {
+        return total;
     }
 
     @Override

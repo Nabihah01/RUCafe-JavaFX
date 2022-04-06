@@ -12,6 +12,7 @@ import javafx.scene.control.TextField;
 import java.util.ArrayList;
 
 public class OrderingCoffeeController {
+    private MainController mainController;
 
     @FXML
     private CheckBox caramel;
@@ -43,6 +44,9 @@ public class OrderingCoffeeController {
 
     ArrayList<String> addIns = new ArrayList<>();
 
+    public void setMainController(MainController main){
+        mainController = main;
+    }
     @FXML
     void initialize() {
         coffeeQuantity.setItems(quantity);
@@ -155,7 +159,7 @@ public class OrderingCoffeeController {
             addIns.add("whipped");
 
         Coffee coffeeOrder = new Coffee(coffeeSize.getSelectionModel().getSelectedItem(), addIns, coffeeQuantity.getSelectionModel().getSelectedItem());
-        MainController.yourOrder.getOrders().add(coffeeOrder);
+        mainController.addToOrder(coffeeOrder);
 
         whipped.setSelected(false);
         cream.setSelected(false);

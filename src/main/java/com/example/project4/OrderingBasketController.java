@@ -8,6 +8,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 
 public class OrderingBasketController {
+    private MainController mainController;
 
     @FXML
     private TextField orderSalesTax;
@@ -21,10 +22,13 @@ public class OrderingBasketController {
     @FXML
     private ListView<MenuItem> userOrders;
 
+    public void setMainController(MainController main){
+        mainController = main;
+    }
     @FXML
     void initialize() {
         //display your order
-        userOrders.setItems((ObservableList<MenuItem>) MainController.yourOrder.getOrders());
+        userOrders.setItems((ObservableList<MenuItem>) mainController.yourOrder.getOrders());
         //display your order total
         displayYourOrderTotal();
     }
@@ -32,11 +36,9 @@ public class OrderingBasketController {
     @FXML
     void placeUserOrder(ActionEvent event) {
         //add it to store orders array
-        MainController.orderNum++;
         //add order number to combo box in store order
         // get combo box from store orders and update it
-
-        MainController.storeOrders.add(MainController.yourOrder);
+        mainController.placeOrder();
         userOrders.getItems().clear();
     }
 
@@ -44,23 +46,23 @@ public class OrderingBasketController {
     void removeSelectedItem(ActionEvent event) {
         MenuItem item = userOrders.getSelectionModel().getSelectedItem();
         userOrders.getItems().remove(item);
-        Double total = Double.parseDouble(orderTotal.getText()) - item.itemPrice();
-        orderTotal.setText(total.toString());
+        double total = Double.parseDouble(orderTotal.getText()) - item.itemPrice();
+        orderTotal.setText(String.valueOf(total));
     }
 
     void displayYourOrderTotal() {
-        Double subtotal = 0.0;
+        double subtotal = 0.0;
         ObservableList<MenuItem> order = userOrders.getItems();
         for(MenuItem m: order) {
             subtotal += m.itemPrice();
         }
-        orderSubTotal.setText(subtotal.toString());
+        orderSubTotal.setText(String.valueOf(subtotal));
 
-        Double salesTax = (6.625 / 100) * Double.parseDouble(orderSubTotal.getText());
-        orderSalesTax.setText(salesTax.toString());
+        double salesTax = (6.625 / 100) * Double.parseDouble(orderSubTotal.getText());
+        orderSalesTax.setText(String.valueOf(salesTax));
 
-        Double total = Double.parseDouble(orderSubTotal.getText()) - salesTax;
-        orderTotal.setText(total.toString());
+        double total = Double.parseDouble(orderSubTotal.getText()) - salesTax;
+        orderTotal.setText(String.valueOf(total));
 
     }
 

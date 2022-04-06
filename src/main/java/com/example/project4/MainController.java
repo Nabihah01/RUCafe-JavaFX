@@ -13,11 +13,30 @@ import java.util.ArrayList;
 
 public class MainController {
     //stores a user's orders
-    static ArrayList<MenuItem> order = new ArrayList<>();
-    static int orderNum = 1;
-    static Order yourOrder = new Order(order, orderNum);
-
+    private int orderNum = 1;
+    protected Order yourOrder = new Order(new ArrayList<MenuItem>(), orderNum);
+    private double price = 0;
     static StoreOrders storeOrders = new StoreOrders(new ArrayList<>());
+
+    public void addToOrder(MenuItem item){
+        yourOrder.add(item);
+        if (item instanceof Coffee) {
+            price += item.itemPrice();
+        }
+        if (item instanceof Donut) {
+            price += item.itemPrice();
+        }
+        yourOrder.setTotal(price);
+        System.out.println(yourOrder.toString() + " price : " + price + " orderNum: "+ orderNum);
+    }
+
+    public void placeOrder(){
+        storeOrders.add(yourOrder);
+        orderNum++;
+        price = 0;
+        yourOrder = new Order(new ArrayList<MenuItem>(), orderNum);
+        System.out.println(storeOrders.getStoreOrders().get(0));
+    }
 
     @FXML
      void orderCoffee(ActionEvent event) {
@@ -27,6 +46,9 @@ public class MainController {
             Stage stage = new Stage();
             stage.setScene(new Scene(root1));
             stage.show();
+            OrderingCoffeeController coffeeController = fxmlLoader.getController();
+            coffeeController.setMainController(this);
+
         } catch(Exception e) {
             e.printStackTrace();
         }
@@ -40,6 +62,8 @@ public class MainController {
             Stage stage = new Stage();
             stage.setScene(new Scene(root1));
             stage.show();
+            OrderingDonutsController donutsController = fxmlLoader.getController();
+            donutsController.setMainController(this);
         } catch(Exception e) {
             e.printStackTrace();
         }
@@ -54,6 +78,8 @@ public class MainController {
             Stage stage = new Stage();
             stage.setScene(new Scene(root1));
             stage.show();
+//            StoreOrdersController storeOrdersController = fxmlLoader.getController();
+//            storeOrdersController.setMainController(this);
         } catch(Exception e) {
             e.printStackTrace();
         }
@@ -68,10 +94,14 @@ public class MainController {
             Stage stage = new Stage();
             stage.setScene(new Scene(root1));
             stage.show();
+            //giving errors!!! whyyy
+            OrderingBasketController orderingBasketController = fxmlLoader.getController();
+            orderingBasketController.setMainController(this);
         } catch(Exception e) {
-            Alert errorAlert = new Alert(Alert.AlertType.ERROR);
-            errorAlert.setContentText("Your store orders cannot be loaded. Please try again.");
-            errorAlert.show();
+            e.printStackTrace();
+//            Alert errorAlert = new Alert(Alert.AlertType.ERROR);
+//            errorAlert.setContentText("Your store orders cannot be loaded. Please try again.");
+//            errorAlert.show();
         }
 
     }
