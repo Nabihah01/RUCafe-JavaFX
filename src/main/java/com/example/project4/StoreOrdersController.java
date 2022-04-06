@@ -3,10 +3,7 @@ package com.example.project4;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
 import java.util.ArrayList;
 
@@ -38,9 +35,15 @@ public class StoreOrdersController {
     @FXML
     void cancelStoreOrder(ActionEvent event) {
         MenuItem item = storeOrdersList.getSelectionModel().getSelectedItem();
+        if(item == null){
+            Alert a = new Alert(Alert.AlertType.ERROR);
+            a.setContentText("Please select an order.");
+            a.show();
+            return;
+        }
         storeOrdersList.getItems().remove(item);
-        Double total = Double.parseDouble(storeOrderTotal.getText()) - item.itemPrice();
-        storeOrderTotal.setText(total.toString());
+        double total = Double.parseDouble(storeOrderTotal.getText()) - item.itemPrice();
+        storeOrderTotal.setText(String.valueOf(total));
     }
 
     @FXML
@@ -58,12 +61,12 @@ public class StoreOrdersController {
         storeOrdersList.setItems((ObservableList<MenuItem>) orderToDisplay);
 
         //calculate total
-        Double total = 0.0;
+        double total = 0.0;
         ObservableList<MenuItem> order = storeOrdersList.getItems();
         for(MenuItem m: order) {
             total += m.itemPrice();
         }
-        storeOrderTotal.setText(total.toString());
+        storeOrderTotal.setText(String.valueOf(total));
     }
 
 }

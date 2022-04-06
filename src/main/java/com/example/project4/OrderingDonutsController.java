@@ -43,9 +43,15 @@ public class OrderingDonutsController {
     @FXML
     void removeSelected() {
         MenuItem item = orderList.getSelectionModel().getSelectedItem();
+        if(item == null){
+            Alert a = new Alert(Alert.AlertType.ERROR);
+            a.setContentText("No item has been selected.");
+            a.show();
+            return;
+        }
         orderList.getItems().remove(item);
-        Double total = Double.parseDouble(subtotal.getText()) - item.itemPrice();
-        subtotal.setText(total.toString());
+        double total = Double.parseDouble(subtotal.getText()) - item.itemPrice();
+        subtotal.setText(String.valueOf(total));
     }
 
     @FXML
@@ -53,11 +59,17 @@ public class OrderingDonutsController {
         String donutType = donutTypes.getSelectionModel().getSelectedItem();
         String donutFlavor = donutFlavors.getSelectionModel().getSelectedItem();
         Integer donutQ = donutQuantity.getSelectionModel().getSelectedItem();
+        if(donutType == null || donutFlavor == null || donutQ  == null){
+            Alert a = new Alert(Alert.AlertType.ERROR);
+            a.setContentText("Missing information for order.");
+            a.show();
+            return;
+        }
         Donut donut = new Donut(donutType, donutFlavor, donutQ);
 
         orderList.getItems().add(donut);
-        Double total = donut.itemPrice() + Double.parseDouble(subtotal.getText());
-        subtotal.setText(total.toString());
+        double total = donut.itemPrice() + Double.parseDouble(subtotal.getText());
+        subtotal.setText(String.valueOf(total));
 
         donutFlavors.getSelectionModel().clearSelection();
         donutQuantity.getSelectionModel().clearSelection();
@@ -67,6 +79,12 @@ public class OrderingDonutsController {
     @FXML
     void donutAddToOrder(ActionEvent event) {
         ObservableList<MenuItem> order = orderList.getItems();
+        if(order.isEmpty()){
+            Alert a = new Alert(Alert.AlertType.ERROR);
+            a.setContentText("Please add an order.");
+            a.show();
+            return;
+        }
         for(int i = 0; i < order.size(); i++) {
             MainController.yourOrder.getOrders().add(order.get(i));
         }
@@ -77,7 +95,7 @@ public class OrderingDonutsController {
         subtotal.clear();
 
         Alert a = new Alert(Alert.AlertType.CONFIRMATION);
-        a.setHeaderText("Donut Order Placed");
+        a.setContentText("Donut Order Placed");
         a.show();
     }
 }

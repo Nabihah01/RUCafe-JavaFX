@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.event.ActionEvent;
 import javafx.stage.Stage;
@@ -68,7 +69,9 @@ public class MainController {
             stage.setScene(new Scene(root1));
             stage.show();
         } catch(Exception e) {
-            e.printStackTrace();
+            Alert errorAlert = new Alert(Alert.AlertType.ERROR);
+            errorAlert.setContentText("Your store orders cannot be loaded. Please try again.");
+            errorAlert.show();
         }
 
     }
