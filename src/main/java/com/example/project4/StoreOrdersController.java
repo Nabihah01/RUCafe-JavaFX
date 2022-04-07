@@ -79,7 +79,7 @@ public class StoreOrdersController {
         //remove number from OrderNums list and update
         orderNumbers.remove(orderNum);
         storeOrderNumber.setItems(orderNumbers);
-        if(orderNumbers.isEmpty()) {
+        if(!orderNumbers.isEmpty()) {
             storeOrderNumber.setValue(orderNumbers.get(0));
         }
 
