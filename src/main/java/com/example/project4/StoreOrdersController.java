@@ -79,6 +79,10 @@ public class StoreOrdersController {
         //remove number from OrderNums list and update
         orderNumbers.remove(orderNum);
         storeOrderNumber.setItems(orderNumbers);
+        if(orderNumbers.isEmpty()) {
+            storeOrderNumber.setValue(orderNumbers.get(0));
+        }
+
     }
 
     @FXML
@@ -109,7 +113,7 @@ public class StoreOrdersController {
     }
 
     @FXML
-    void selectOrderNumber() {
+    void selectOrderNumber(ActionEvent event) {
         storeOrdersList.getItems().clear();
 
         for(int i = 0 ; i < mainController.getStoreOrders().getStoreOrdersArray().size(); i++){
