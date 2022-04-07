@@ -11,7 +11,7 @@
             <Font size="38.0" />
          </font>
       </Label>
-      <ListView fx:id="storeOrdersList" layoutX="38.0" layoutY="119.0" prefHeight="221.0" prefWidth="523.0" />
+      <ListView fx:id="storeOrdersList" layoutX="38.0" layoutY="125.0" prefHeight="215.0" prefWidth="526.0" />
       <Label layoutX="360.0" layoutY="80.0" text="Total:">
          <font>
             <Font size="16.0" />

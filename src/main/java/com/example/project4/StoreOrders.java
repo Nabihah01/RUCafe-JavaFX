@@ -13,7 +13,7 @@ public class StoreOrders implements Customizable {
         this.storeOrders = new ArrayList<Order>();
     }
 
-    public ArrayList<Order> getStoreOrders() {
+    public ArrayList<Order> getStoreOrdersArray() {
         return storeOrders;
     }
 

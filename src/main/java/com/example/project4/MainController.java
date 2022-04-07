@@ -44,7 +44,15 @@ public class MainController {
     }
 
     public void removeFromOrder(MenuItem item) {
-
+        yourOrder.remove(item);
+        if (item instanceof Coffee) {
+            price -= item.itemPrice();
+        }
+        if (item instanceof Donut) {
+            price -= item.itemPrice();
+        }
+        yourOrder.setTotal(price);
+        System.out.println(yourOrder.toString() + " price : " + price + " orderNum: "+ orderNum);
     }
 
     public void placeOrder(){
@@ -52,7 +60,7 @@ public class MainController {
         orderNum++;
         price = 0;
         yourOrder = new Order(new ArrayList<MenuItem>(), orderNum);
-        System.out.println(storeOrders.getStoreOrders().get(0));
+        System.out.println(storeOrders.getStoreOrdersArray().get(0));
     }
 
     @FXML

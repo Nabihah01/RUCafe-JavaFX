@@ -99,7 +99,7 @@ public class OrderingDonutsController {
         donutFlavors.getSelectionModel().clearSelection();
         donutQuantity.getSelectionModel().clearSelection();
         donutTypes.getSelectionModel().clearSelection();
-        subtotal.clear();
+        subtotal.setText("0.00");
 
         Alert a = new Alert(Alert.AlertType.CONFIRMATION);
         a.setContentText("Donut Order Placed");

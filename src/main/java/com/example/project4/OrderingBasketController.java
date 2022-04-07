@@ -4,6 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
@@ -30,44 +31,59 @@ public class OrderingBasketController {
         for(int i = 0; i < mainController.getYourOrder().getOrders().size(); i++) {
             order.add(mainController.getYourOrder().getOrders().get(i));
         }
+        displayYourOrderTotal();
     }
 
     @FXML
     void initialize() {
         //display your order
         userOrders.setItems(order);
-        displayYourOrderTotal();
     }
 
     @FXML
     void placeUserOrder(ActionEvent event) {
-        //add it to store orders array
-        //add order number to combo box in store order
-        // get combo box from store orders and update it
+        ObservableList<MenuItem> order = userOrders.getItems();
+        if(order.isEmpty()){
+            Alert a = new Alert(Alert.AlertType.ERROR);
+            a.setContentText("There is no order to place");
+            a.show();
+            return;
+        }
+
         mainController.placeOrder();
         userOrders.getItems().clear();
+        orderSalesTax.clear();
+        orderTotal.clear();
+        orderSubTotal.clear();
     }
 
     @FXML
     void removeSelectedItem(ActionEvent event) {
+        ObservableList<MenuItem> order = userOrders.getItems();
+        if(order.isEmpty()){
+            Alert a = new Alert(Alert.AlertType.ERROR);
+            a.setContentText("There is no item to remove");
+            a.show();
+            return;
+        }
+
+        //remove from ListView
         MenuItem item = userOrders.getSelectionModel().getSelectedItem();
         userOrders.getItems().remove(item);
-        double total = Double.parseDouble(orderTotal.getText()) - item.itemPrice();
-        orderTotal.setText(String.valueOf(total));
+        //remove from order arraylist
+        mainController.removeFromOrder(item);
+        //update price
+        displayYourOrderTotal();
     }
 
     void displayYourOrderTotal() {
-        double subtotal = 0.0;
-        ObservableList<MenuItem> order = userOrders.getItems();
-        for(MenuItem m: order) {
-            subtotal += m.itemPrice();
-        }
+        double subtotal = mainController.getYourOrder().getTotal();
         orderSubTotal.setText(String.valueOf(subtotal));
 
-        double salesTax = (6.625 / 100) * Double.parseDouble(orderSubTotal.getText());
+        double salesTax = (6.625 / 100) * subtotal;
         orderSalesTax.setText(String.valueOf(salesTax));
 
-        double total = Double.parseDouble(orderSubTotal.getText()) - salesTax;
+        double total = subtotal + salesTax;
         orderTotal.setText(String.valueOf(total));
 
     }

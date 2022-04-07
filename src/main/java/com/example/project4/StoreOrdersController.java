@@ -23,37 +23,43 @@ public class StoreOrdersController {
     @FXML
     private ListView<Order> storeOrdersList;
 
-    public ComboBox<Integer> getStoreOrderNumber() {
-        return storeOrderNumber;
-    }
-
     public void setMainController(MainController main){
         mainController = main;
-        for(int i = 0; i < mainController.getStoreOrders().getStoreOrders().size(); i++) {
-            orderNumbers.add(mainController.getStoreOrders().getStoreOrders().get(i).getOrderNumber());
+        for(int i = 0; i < mainController.getStoreOrders().getStoreOrdersArray().size(); i++) {
+            orderNumbers.add(mainController.getStoreOrders().getStoreOrdersArray().get(i).getOrderNumber());
         }
-        selectOrderNumber();
     }
 
     @FXML
     void initialize() {
         //set numbers drop-down
         storeOrderNumber.setItems(orderNumbers);
-        storeOrderNumber.setValue(1);
+        if(!orderNumbers.isEmpty()) {
+            storeOrderNumber.setValue(1);
+        }
     }
 
     @FXML
     void cancelStoreOrder(ActionEvent event) {
-        Order order = storeOrdersList.getSelectionModel().getSelectedItem();
-        if(order == null){
+        Integer orderNum = storeOrderNumber.getSelectionModel().getSelectedItem();
+        if(orderNum == null){
             Alert a = new Alert(Alert.AlertType.ERROR);
             a.setContentText("Please select an order.");
             a.show();
             return;
         }
-        storeOrdersList.getItems().remove(order);
-        double total = Double.parseDouble(storeOrderTotal.getText()) - order.getTotal();
-        storeOrderTotal.setText(String.valueOf(total));
+        //remove from ListView and clear total
+        storeOrdersList.getItems().clear();
+        storeOrderTotal.clear();
+        //show next order by default??
+
+        //remove order from storeOrder arraylist
+        Order order = mainController.getStoreOrders().getStoreOrdersArray().get(orderNum);
+        mainController.getStoreOrders().remove(order);
+
+        //remove number from OrderNums list and update
+        orderNumbers.remove(orderNum);
+        storeOrderNumber.setItems(orderNumbers);
     }
 
     @FXML
@@ -64,12 +70,13 @@ public class StoreOrdersController {
     @FXML
     void selectOrderNumber() {
         DecimalFormat df = new DecimalFormat("0.00"); //look at format
+        storeOrdersList.getItems().clear();
 
-        for(int i =0; i < mainController.getStoreOrders().getStoreOrders().size(); i++){
-            if(storeOrderNumber.getValue().equals(mainController.getStoreOrders().getStoreOrders().get(i).getOrderNumber())){
-                selectedOrder.add(mainController.getStoreOrders().getStoreOrders().get(i));
+        for(int i =0; i < mainController.getStoreOrders().getStoreOrdersArray().size(); i++){
+            if(storeOrderNumber.getValue().equals(mainController.getStoreOrders().getStoreOrdersArray().get(i).getOrderNumber())){
+                selectedOrder.add(mainController.getStoreOrders().getStoreOrdersArray().get(i));
                 storeOrdersList.setItems(selectedOrder);
-                storeOrderTotal.setText(df.format(mainController.getStoreOrders().getStoreOrders().get(i).getTotal()));
+                storeOrderTotal.setText(df.format(mainController.getStoreOrders().getStoreOrdersArray().get(i).getTotal()));
             }
         }
         //calculate total
