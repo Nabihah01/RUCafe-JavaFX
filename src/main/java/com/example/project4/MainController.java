@@ -2,15 +2,25 @@ package com.example.project4;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Label;
 import javafx.event.ActionEvent;
 import javafx.stage.Stage;
 
 import java.util.ArrayList;
+
+
+/**
+ * TO DO:
+ * menu closes everything closes
+ * alert for when can't write to file
+ * add total to when we export orders
+ * fix null ptr exception for storeOrders
+ * javadoc comments
+ * system testing
+ * remove all print statements
+ */
 
 public class MainController {
     //stores a user's orders
@@ -57,7 +67,6 @@ public class MainController {
             price -= item.itemPrice();
         }
         yourOrder.setTotal(price);
-        System.out.println(yourOrder.toString() + " price : " + price + " orderNum: "+ orderNum);
     }
 
     public void placeOrder(){
@@ -65,7 +74,6 @@ public class MainController {
         orderNum++;
         price = 0;
         yourOrder = new Order(new ArrayList<MenuItem>(), orderNum);
-        System.out.println(storeOrders.getStoreOrdersArray().get(0));
     }
 
     @FXML

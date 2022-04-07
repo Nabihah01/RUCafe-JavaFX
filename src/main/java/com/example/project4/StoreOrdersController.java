@@ -50,8 +50,21 @@ public class StoreOrdersController {
     }
 
     @FXML
-    void initialize() {
-        //set numbers drop-down
+    void selectOrderNum(ActionEvent event) {
+        storeOrdersList.getItems().clear();
+
+        for(int i = 0 ; i < mainController.getStoreOrders().getStoreOrdersArray().size(); i++) {
+            if(storeOrderNumber.getValue() == null) {
+                System.out.println("No order num selected");
+                return;
+            }
+            if(storeOrderNumber.getValue().equals(mainController.getStoreOrders().getStoreOrdersArray().get(i).getOrderNumber())){
+                selectedOrder.addAll(mainController.getStoreOrders().getStoreOrdersArray().get(i).getOrders());
+                storeOrdersList.setItems(selectedOrder);
+                storeOrderTotal.setText(df.format(mainController.getStoreOrders().getStoreOrdersArray().get(i).getTotal()));
+                break;
+            }
+        }
     }
 
     @FXML
@@ -77,6 +90,7 @@ public class StoreOrdersController {
         }
 
         //remove number from OrderNums list and update
+        storeOrderNumber.getSelectionModel().clearSelection();
         orderNumbers.remove(orderNum);
         storeOrderNumber.setItems(orderNumbers);
         if(!orderNumbers.isEmpty()) {
@@ -112,25 +126,6 @@ public class StoreOrdersController {
         }
     }
 
-    @FXML
-    void selectOrderNumber(ActionEvent event) {
-        storeOrdersList.getItems().clear();
 
-        for(int i = 0 ; i < mainController.getStoreOrders().getStoreOrdersArray().size(); i++){
-            if(storeOrderNumber.getValue().equals(mainController.getStoreOrders().getStoreOrdersArray().get(i).getOrderNumber())){
-                selectedOrder.addAll(mainController.getStoreOrders().getStoreOrdersArray().get(i).getOrders());
-                storeOrdersList.setItems(selectedOrder);
-                storeOrderTotal.setText(df.format(mainController.getStoreOrders().getStoreOrdersArray().get(i).getTotal()));
-                break;
-            }
-        }
-        //calculate total
-//        double total = 0.0;
-//        ObservableList<MenuItem> order = storeOrdersList.getItems();
-//        for(MenuItem m: order) {
-//            total += m.itemPrice();
-//        }
-//        storeOrderTotal.setText(String.valueOf(total));
-    }
 
 }

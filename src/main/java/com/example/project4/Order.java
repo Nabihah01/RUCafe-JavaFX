@@ -71,18 +71,4 @@ public class Order implements Customizable {
         }
         return userOrders.toString();
     }
-
-    public static void main(String [] args){
-        ArrayList <String> addIns = new ArrayList<>();
-        Coffee coffee = new Coffee("Tall",addIns, 1);
-        Donut donut = new Donut("yeast", "chocolate", 2);
-        ArrayList<MenuItem> orders = new ArrayList<>();
-        Order order = new Order(orders, 1);
-        orders.add(coffee);
-        System.out.println(orders);
-        orders.add(donut);
-        System.out.println(order.toString());
-
-
-    }
 }

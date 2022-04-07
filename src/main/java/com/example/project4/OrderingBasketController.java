@@ -49,10 +49,6 @@ public class OrderingBasketController {
     }
 
     @FXML
-    void initialize() {
-        //display your order
-    }
-    @FXML
     void placeUserOrder(ActionEvent event) {
         ObservableList<MenuItem> order = userOrders.getItems();
         if(order.isEmpty()){

@@ -10,7 +10,6 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 
 import java.text.DecimalFormat;
-import java.util.ArrayList;
 
 public class OrderingDonutsController {
     protected MainController mainController;
