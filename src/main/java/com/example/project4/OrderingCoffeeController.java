@@ -9,10 +9,12 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class OrderingCoffeeController {
     protected MainController mainController;
+    protected static final DecimalFormat df = new DecimalFormat("###,##0.00");
 
     @FXML
     private CheckBox caramel;
@@ -69,7 +71,7 @@ public class OrderingCoffeeController {
             price += 0.30;
             addIns.add("cream");
         }
-        coffeeTotal.setText(String.valueOf(price));
+        coffeeTotal.setText(String.valueOf(df.format(price)));
     }
 
     @FXML
@@ -84,7 +86,7 @@ public class OrderingCoffeeController {
             price += 0.30;
             addIns.add("milk");
         }
-        coffeeTotal.setText(String.valueOf(price));
+        coffeeTotal.setText(String.valueOf(df.format(price)));
     }
 
     @FXML
@@ -99,7 +101,7 @@ public class OrderingCoffeeController {
             price += 0.30;
             addIns.add("caramel");
         }
-        coffeeTotal.setText(String.valueOf(price));
+        coffeeTotal.setText(String.valueOf(df.format(price)));
     }
 
     @FXML
@@ -114,7 +116,7 @@ public class OrderingCoffeeController {
             price += 0.30;
             addIns.add("syrup");
         }
-        coffeeTotal.setText(String.valueOf(price));
+        coffeeTotal.setText(String.valueOf(df.format(price)));
     }
     @FXML
     void whippedSelected(ActionEvent event) {
@@ -128,21 +130,21 @@ public class OrderingCoffeeController {
             price += 0.30;
             addIns.add("whipped cream");
         }
-        coffeeTotal.setText(String.valueOf(price));
+        coffeeTotal.setText(String.valueOf(df.format(price)));
     }
 
     @FXML
     void quantitySelected(ActionEvent event) {
         Coffee coffeeOrder = new Coffee(coffeeSize.getSelectionModel().getSelectedItem(), addIns, coffeeQuantity.getSelectionModel().getSelectedItem());
         double price = coffeeOrder.itemPrice();
-        coffeeTotal.setText(String.valueOf(price));
+        coffeeTotal.setText(String.valueOf(df.format(price)));
     }
 
     @FXML
     void sizeSelected(ActionEvent event) {
         Coffee coffeeOrder = new Coffee(coffeeSize.getSelectionModel().getSelectedItem(), addIns, coffeeQuantity.getSelectionModel().getSelectedItem());
         double price = coffeeOrder.itemPrice();
-        coffeeTotal.setText(String.valueOf(price));
+        coffeeTotal.setText(String.valueOf(df.format(price)));
     }
 
     @FXML

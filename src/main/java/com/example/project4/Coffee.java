@@ -36,7 +36,6 @@ public class Coffee extends MenuItem implements Customizable{
         double price = 0;
         int addIn = addIns.size();
         price += addIn * 0.30;
-
         switch (cupSize) {
             case "Short":
                 price += 1.69;

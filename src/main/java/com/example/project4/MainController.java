@@ -2,6 +2,7 @@ package com.example.project4;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -17,6 +18,10 @@ public class MainController {
     private Order yourOrder;
     private double price = 0;
     private StoreOrders storeOrders;
+    private Stage coffeeStage = new Stage();
+    private Stage donutStage = new Stage();
+    private Stage orderBaskStage = new Stage();
+    private Stage storeOrderStage = new Stage();
 
     public MainController() {
         this.yourOrder = new Order(new ArrayList<>(), orderNum);
@@ -66,11 +71,16 @@ public class MainController {
     @FXML
      void orderCoffee(ActionEvent event) {
         try {
+            if(coffeeStage.isShowing() || donutStage.isShowing() || orderBaskStage.isShowing()
+            || storeOrderStage.isShowing()){
+                coffeeStage.toFront();
+                return;
+            }
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("OrderingCoffee-view.fxml"));
             Parent root1 = (Parent) fxmlLoader.load();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root1));
-            stage.show();
+            coffeeStage = new Stage();
+            coffeeStage.setScene(new Scene(root1));
+            coffeeStage.show();
             OrderingCoffeeController coffeeController = fxmlLoader.getController();
             coffeeController.setMainController(this);
 
@@ -85,11 +95,16 @@ public class MainController {
     @FXML
     void orderDonuts(ActionEvent event) {
         try {
+            if(coffeeStage.isShowing() || donutStage.isShowing() || orderBaskStage.isShowing()
+                    || storeOrderStage.isShowing()){
+                donutStage.toFront();
+                return;
+            }
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("OrderingDonuts-view.fxml"));
             Parent root1 = (Parent) fxmlLoader.load();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root1));
-            stage.show();
+            donutStage = new Stage();
+            donutStage.setScene(new Scene(root1));
+            donutStage.show();
             OrderingDonutsController donutsController = fxmlLoader.getController();
             donutsController.setMainController(this);
         } catch(Exception e) {
@@ -104,11 +119,16 @@ public class MainController {
     @FXML
     void viewStoreOrders(ActionEvent event) {
         try {
+            if(coffeeStage.isShowing() || donutStage.isShowing() || orderBaskStage.isShowing()
+                    || storeOrderStage.isShowing()){
+                storeOrderStage.toFront();
+                return;
+            }
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("StoreOrders-view.fxml"));
             Parent root1 = (Parent) fxmlLoader.load();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root1));
-            stage.show();
+            storeOrderStage = new Stage();
+            storeOrderStage.setScene(new Scene(root1));
+            storeOrderStage.show();
             StoreOrdersController storeOrdersController = fxmlLoader.getController();
             storeOrdersController.setMainController(this);
         } catch(Exception e) {
@@ -123,19 +143,23 @@ public class MainController {
     @FXML
     void viewYourOrder(ActionEvent event) {
         try {
+            if(coffeeStage.isShowing() || donutStage.isShowing() || orderBaskStage.isShowing()
+                    || storeOrderStage.isShowing()){
+                orderBaskStage.toFront();
+                return;
+            }
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("OrderingBasket-view.fxml"));
             Parent root1 = (Parent) fxmlLoader.load();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root1));
-            stage.show();
-            //giving errors!!! whyyy
+            orderBaskStage = new Stage();
+            orderBaskStage.setScene(new Scene(root1));
+            orderBaskStage.show();
             OrderingBasketController basketController = fxmlLoader.getController();
             basketController.setMainController(this);
         } catch(Exception e) {
             e.printStackTrace();
-//            Alert errorAlert = new Alert(Alert.AlertType.ERROR);
-//            errorAlert.setContentText("Your order cannot be loaded. Please try again.");
-//            errorAlert.show();
+            Alert errorAlert = new Alert(Alert.AlertType.ERROR);
+            errorAlert.setContentText("Your order cannot be loaded. Please try again.");
+            errorAlert.show();
         }
 
     }

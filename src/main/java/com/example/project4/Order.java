@@ -65,7 +65,11 @@ public class Order implements Customizable {
 
     @Override
     public String toString(){
-        return orders.toString();
+        StringBuilder userOrders = new StringBuilder();
+        for(int i = 0; i < orders.size(); i++){
+            userOrders.append(orders.get(i).toString()).append(" ");
+        }
+        return userOrders.toString();
     }
 
     public static void main(String [] args){
@@ -73,10 +77,11 @@ public class Order implements Customizable {
         Coffee coffee = new Coffee("Tall",addIns, 1);
         Donut donut = new Donut("yeast", "chocolate", 2);
         ArrayList<MenuItem> orders = new ArrayList<>();
+        Order order = new Order(orders, 1);
         orders.add(coffee);
         System.out.println(orders);
         orders.add(donut);
-        System.out.println(orders);
+        System.out.println(order.toString());
 
 
     }

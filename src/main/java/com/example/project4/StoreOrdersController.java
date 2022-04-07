@@ -5,6 +5,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.stage.Stage;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -12,7 +13,8 @@ import java.util.ArrayList;
 public class StoreOrdersController {
     protected MainController mainController;
     protected ObservableList<Integer> orderNumbers = FXCollections.observableArrayList();
-    protected ObservableList <Order> selectedOrder = FXCollections.observableArrayList();
+    protected ObservableList <MenuItem> selectedOrder = FXCollections.observableArrayList();
+    protected static final DecimalFormat df = new DecimalFormat("###,##0.00");
 
     @FXML
     private ComboBox<Integer> storeOrderNumber;
@@ -21,22 +23,31 @@ public class StoreOrdersController {
     private TextField storeOrderTotal;
 
     @FXML
-    private ListView<Order> storeOrdersList;
+    private ListView<MenuItem> storeOrdersList;
 
     public void setMainController(MainController main){
         mainController = main;
         for(int i = 0; i < mainController.getStoreOrders().getStoreOrdersArray().size(); i++) {
             orderNumbers.add(mainController.getStoreOrders().getStoreOrdersArray().get(i).getOrderNumber());
         }
+        if (orderNumbers.isEmpty()) {
+            Alert a = new Alert(Alert.AlertType.ERROR);
+            a.setHeaderText("Orders");
+            a.setContentText("No Store Orders have been placed");
+            a.show();
+            Stage stage = (Stage) a.getDialogPane().getScene().getWindow();
+            stage.setAlwaysOnTop(true);
+            return;
+
+        }
+        storeOrderNumber.setItems(orderNumbers);
+        //show first one by default
+        storeOrderNumber.setValue(orderNumbers.get(0));
     }
 
     @FXML
     void initialize() {
         //set numbers drop-down
-        storeOrderNumber.setItems(orderNumbers);
-        if(!orderNumbers.isEmpty()) {
-            storeOrderNumber.setValue(1);
-        }
     }
 
     @FXML
@@ -54,8 +65,12 @@ public class StoreOrdersController {
         //show next order by default??
 
         //remove order from storeOrder arraylist
-        Order order = mainController.getStoreOrders().getStoreOrdersArray().get(orderNum);
-        mainController.getStoreOrders().remove(order);
+        for(int i = 0; i < mainController.getStoreOrders().getStoreOrdersArray().size(); i++){
+            if(mainController.getStoreOrders().getStoreOrdersArray().get(i).getOrderNumber() == orderNum){
+                mainController.getStoreOrders().remove(mainController.getStoreOrders().getStoreOrdersArray().get(i));
+                break;
+            }
+        }
 
         //remove number from OrderNums list and update
         orderNumbers.remove(orderNum);
@@ -69,14 +84,14 @@ public class StoreOrdersController {
 
     @FXML
     void selectOrderNumber() {
-        DecimalFormat df = new DecimalFormat("0.00"); //look at format
         storeOrdersList.getItems().clear();
 
         for(int i =0; i < mainController.getStoreOrders().getStoreOrdersArray().size(); i++){
             if(storeOrderNumber.getValue().equals(mainController.getStoreOrders().getStoreOrdersArray().get(i).getOrderNumber())){
-                selectedOrder.add(mainController.getStoreOrders().getStoreOrdersArray().get(i));
+                selectedOrder.addAll(mainController.getStoreOrders().getStoreOrdersArray().get(i).getOrders());
                 storeOrdersList.setItems(selectedOrder);
                 storeOrderTotal.setText(df.format(mainController.getStoreOrders().getStoreOrdersArray().get(i).getTotal()));
+                break;
             }
         }
         //calculate total

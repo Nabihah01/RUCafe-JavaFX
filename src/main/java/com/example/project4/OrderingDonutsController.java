@@ -9,11 +9,12 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class OrderingDonutsController {
     protected MainController mainController;
-
+    protected static final DecimalFormat df = new DecimalFormat("###,##0.00");
     @FXML
     private ComboBox<String> donutFlavors;
     protected ObservableList<String> flavors = FXCollections.observableArrayList(
@@ -58,7 +59,7 @@ public class OrderingDonutsController {
         }
         orderList.getItems().remove(item);
         double total = Double.parseDouble(subtotal.getText()) - item.itemPrice();
-        subtotal.setText(String.valueOf(total));
+        subtotal.setText(String.valueOf(df.format(total)));
     }
 
     @FXML
@@ -76,7 +77,7 @@ public class OrderingDonutsController {
 
         orderList.getItems().add(donut);
         double total = donut.itemPrice() + Double.parseDouble(subtotal.getText());
-        subtotal.setText(String.valueOf(total));
+        subtotal.setText(String.valueOf(df.format(total)));
 
         donutFlavors.getSelectionModel().clearSelection();
         donutQuantity.getSelectionModel().clearSelection();
