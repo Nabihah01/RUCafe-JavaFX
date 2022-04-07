@@ -12,7 +12,8 @@ import javafx.scene.control.TextField;
 import java.util.ArrayList;
 
 public class OrderingDonutsController {
-    private MainController mainController;
+    protected MainController mainController;
+
     @FXML
     private ComboBox<String> donutFlavors;
     protected ObservableList<String> flavors = FXCollections.observableArrayList(
@@ -37,11 +38,13 @@ public class OrderingDonutsController {
     public void setMainController(MainController main){
         mainController = main;
     }
+
     @FXML
     void initialize() {
         donutTypes.setItems(types);
         donutQuantity.setItems(quantity);
         donutFlavors.setItems(flavors);
+        subtotal.setText("0.00");
     }
 
     @FXML

@@ -20,6 +20,7 @@ public class Order implements Customizable {
     public Order(ArrayList<MenuItem> orders, int orderNumber){
         this.orders = orders;
         this.orderNumber = orderNumber;
+        this.total = 0;
     }
 
     @Override
@@ -55,6 +56,10 @@ public class Order implements Customizable {
     }
 
     public double getTotal() {
+        double total = 0;
+        for(int i = 0; i < orders.size(); i++) {
+            total += orders.get(i).itemPrice();
+        }
         return total;
     }
 

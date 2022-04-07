@@ -1,5 +1,6 @@
 package com.example.project4;
 
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -8,7 +9,8 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 
 public class OrderingBasketController {
-    private MainController mainController;
+    protected MainController mainController;
+    private ObservableList<MenuItem> order = FXCollections.observableArrayList();
 
     @FXML
     private TextField orderSalesTax;
@@ -24,12 +26,16 @@ public class OrderingBasketController {
 
     public void setMainController(MainController main){
         mainController = main;
+
+        for(int i = 0; i < mainController.getYourOrder().getOrders().size(); i++) {
+            order.add(mainController.getYourOrder().getOrders().get(i));
+        }
     }
+
     @FXML
     void initialize() {
         //display your order
-        userOrders.setItems((ObservableList<MenuItem>) mainController.yourOrder.getOrders());
-        //display your order total
+        userOrders.setItems(order);
         displayYourOrderTotal();
     }
 

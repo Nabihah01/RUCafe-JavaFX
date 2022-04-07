@@ -14,9 +14,22 @@ import java.util.ArrayList;
 public class MainController {
     //stores a user's orders
     private int orderNum = 1;
-    protected Order yourOrder = new Order(new ArrayList<MenuItem>(), orderNum);
+    private Order yourOrder;
     private double price = 0;
-    static StoreOrders storeOrders = new StoreOrders(new ArrayList<>());
+    private StoreOrders storeOrders;
+
+    public MainController() {
+        this.yourOrder = new Order(new ArrayList<>(), orderNum);
+        this.storeOrders = new StoreOrders();
+    }
+
+    public Order getYourOrder() {
+        return yourOrder;
+    }
+
+    public StoreOrders getStoreOrders() {
+        return storeOrders;
+    }
 
     public void addToOrder(MenuItem item){
         yourOrder.add(item);
@@ -28,6 +41,10 @@ public class MainController {
         }
         yourOrder.setTotal(price);
         System.out.println(yourOrder.toString() + " price : " + price + " orderNum: "+ orderNum);
+    }
+
+    public void removeFromOrder(MenuItem item) {
+
     }
 
     public void placeOrder(){
@@ -51,6 +68,9 @@ public class MainController {
 
         } catch(Exception e) {
             e.printStackTrace();
+            Alert errorAlert = new Alert(Alert.AlertType.ERROR);
+            errorAlert.setContentText("Order Coffee cannot be loaded. Please try again.");
+            errorAlert.show();
         }
     }
 
@@ -66,6 +86,9 @@ public class MainController {
             donutsController.setMainController(this);
         } catch(Exception e) {
             e.printStackTrace();
+            Alert errorAlert = new Alert(Alert.AlertType.ERROR);
+            errorAlert.setContentText("Order Donuts can't be loaded. Please try again.");
+            errorAlert.show();
         }
 
     }
@@ -78,10 +101,13 @@ public class MainController {
             Stage stage = new Stage();
             stage.setScene(new Scene(root1));
             stage.show();
-//            StoreOrdersController storeOrdersController = fxmlLoader.getController();
-//            storeOrdersController.setMainController(this);
+            StoreOrdersController storeOrdersController = fxmlLoader.getController();
+            storeOrdersController.setMainController(this);
         } catch(Exception e) {
             e.printStackTrace();
+            Alert errorAlert = new Alert(Alert.AlertType.ERROR);
+            errorAlert.setContentText("Your store orders cannot be loaded. Please try again.");
+            errorAlert.show();
         }
 
     }
@@ -95,12 +121,12 @@ public class MainController {
             stage.setScene(new Scene(root1));
             stage.show();
             //giving errors!!! whyyy
-            OrderingBasketController orderingBasketController = fxmlLoader.getController();
-            orderingBasketController.setMainController(this);
+            OrderingBasketController basketController = fxmlLoader.getController();
+            basketController.setMainController(this);
         } catch(Exception e) {
             e.printStackTrace();
 //            Alert errorAlert = new Alert(Alert.AlertType.ERROR);
-//            errorAlert.setContentText("Your store orders cannot be loaded. Please try again.");
+//            errorAlert.setContentText("Your order cannot be loaded. Please try again.");
 //            errorAlert.show();
         }
 

@@ -12,7 +12,7 @@ import javafx.scene.control.TextField;
 import java.util.ArrayList;
 
 public class OrderingCoffeeController {
-    private MainController mainController;
+    protected MainController mainController;
 
     @FXML
     private CheckBox caramel;
@@ -47,6 +47,7 @@ public class OrderingCoffeeController {
     public void setMainController(MainController main){
         mainController = main;
     }
+
     @FXML
     void initialize() {
         coffeeQuantity.setItems(quantity);

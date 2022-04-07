@@ -9,8 +9,8 @@ import java.util.ArrayList;
 public class StoreOrders implements Customizable {
     private ArrayList<Order> storeOrders;
 
-    public StoreOrders(ArrayList<Order> storeOrders){
-        this.storeOrders = storeOrders;
+    public StoreOrders(){
+        this.storeOrders = new ArrayList<Order>();
     }
 
     public ArrayList<Order> getStoreOrders() {
