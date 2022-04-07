@@ -67,7 +67,7 @@ public class Order implements Customizable {
     public String toString(){
         StringBuilder userOrders = new StringBuilder();
         for(int i = 0; i < orders.size(); i++){
-            userOrders.append(orders.get(i).toString()).append(" ");
+            userOrders.append(orders.get(i).toString()).append(System.lineSeparator());
         }
         return userOrders.toString();
     }

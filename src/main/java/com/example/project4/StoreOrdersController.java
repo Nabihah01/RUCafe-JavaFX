@@ -5,8 +5,12 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
@@ -78,15 +82,37 @@ public class StoreOrdersController {
     }
 
     @FXML
-    void exportStoreOrders(ActionEvent event) {
+    void exportStoreOrders(ActionEvent event) throws FileNotFoundException {
+        //put try-catch for exception
+        FileChooser chooser = new FileChooser();
+        chooser.setTitle("Open Target File for the Export");
+        chooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Text Files", "*.txt"),
+                new FileChooser.ExtensionFilter("All Files", "*.*"));
+        Stage stage = new Stage();
+        File targetFile = chooser.showSaveDialog(stage); //get the reference of the target file
 
+        //write code to write to the file.
+        PrintWriter pw;
+        if(targetFile.canWrite()) {
+            pw = new PrintWriter(targetFile);
+            for(int i = 0; i < mainController.getStoreOrders().getStoreOrdersArray().size(); i++) {
+                int orderNum = mainController.getStoreOrders().getStoreOrdersArray().get(i).getOrderNumber();
+                Order order = mainController.getStoreOrders().getStoreOrdersArray().get(i);
+                pw.println("Order" + orderNum);
+                pw.print(order.toString());
+                pw.println();
+            }
+            pw.close();
+        } else {
+            //alert can't write to file
+        }
     }
 
     @FXML
     void selectOrderNumber() {
         storeOrdersList.getItems().clear();
 
-        for(int i =0; i < mainController.getStoreOrders().getStoreOrdersArray().size(); i++){
+        for(int i = 0 ; i < mainController.getStoreOrders().getStoreOrdersArray().size(); i++){
             if(storeOrderNumber.getValue().equals(mainController.getStoreOrders().getStoreOrdersArray().get(i).getOrderNumber())){
                 selectedOrder.addAll(mainController.getStoreOrders().getStoreOrdersArray().get(i).getOrders());
                 storeOrdersList.setItems(selectedOrder);
