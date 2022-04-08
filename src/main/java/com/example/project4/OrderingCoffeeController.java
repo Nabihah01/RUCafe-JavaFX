@@ -149,7 +149,7 @@ public class OrderingCoffeeController {
 
     @FXML
     void coffeeAddtoOrder(ActionEvent event) {
-        ArrayList<String> addIns = new ArrayList<>();
+        addIns = new ArrayList<>();
         if(cream.isSelected())
             addIns.add("cream");
         if(caramel.isSelected())
@@ -159,8 +159,8 @@ public class OrderingCoffeeController {
         if(milk.isSelected())
             addIns.add("milk");
         if(whipped.isSelected())
-            addIns.add("whipped");
-
+            addIns.add("whipped cream");
+        System.out.println(addIns);
         Coffee coffeeOrder = new Coffee(coffeeSize.getSelectionModel().getSelectedItem(), addIns, coffeeQuantity.getSelectionModel().getSelectedItem());
         mainController.addToOrder(coffeeOrder);
 
@@ -172,6 +172,7 @@ public class OrderingCoffeeController {
         coffeeSize.setValue("Short");
         coffeeQuantity.setValue(1);
         coffeeTotal.setText("1.69");
+        addIns.clear();
 
         Alert a = new Alert(Alert.AlertType.CONFIRMATION);
         a.setContentText("Coffee Order Placed");

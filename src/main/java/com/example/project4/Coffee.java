@@ -3,34 +3,32 @@ package com.example.project4;
 import java.util.ArrayList;
 
 /**
- * An instance of this class is a menu item in an order.
- * This class must extend MenuItem class and implement the Customizable interface above to
- * provide the behavior of adding and removing the add-ins.
- *
- * Brewed coffee, with the choices of different add-ins: cream, syrup, milk, caramel, and whipped cream;
- * and, with the choices of different cup sizes: Short, Tall, Grande and Venti.
- * The price for a Short black coffee is $1.69. Each add-in costs $0.30. The price increase for the next size is $0.40.
- * For example, the price increase for a Grande is $0.80,
- * therefore a Grande black coffee is $2.49, and a Grande coffee with cream and syrup would be $3.09.
+ * This class extends MenuItem and represents coffee object.
+ * Has three attributes - cupsize, addins, and quantity
+ *  @author Nabihah, Maryam
  */
 public class Coffee extends MenuItem implements Customizable{
     private String cupSize;
     private ArrayList<String> addIns;
     private int quantity;
+
+    /**
+     * Constructor for coffee object
+     * @param cupSize size of coffee
+     * @param addIns addins
+     * @param quantity quantity
+     */
     public Coffee(String cupSize, ArrayList<String> addIns, int quantity){
         this.cupSize = cupSize;
         this.addIns = addIns;
         this.quantity = quantity;
     }
 
-    public String getCupSize() {
-        return cupSize;
-    }
-
-    public ArrayList<String> getAddIns() {
-        return addIns;
-    }
-
+    /**
+     * overrides itemPrice method, and calculates price for
+     * coffee
+     * @return price of coffee object
+     */
     @Override
     public double itemPrice() {
         double price = 0;
@@ -53,6 +51,11 @@ public class Coffee extends MenuItem implements Customizable{
         return price * quantity;
     }
 
+    /**
+     * overrides method, adds new coffee object to list
+     * @param obj to be added
+     * @return boolean
+     */
     @Override
     public boolean add(Object obj) {
         if(obj instanceof String){
@@ -63,6 +66,11 @@ public class Coffee extends MenuItem implements Customizable{
         return false;
     }
 
+    /**
+     * overrides method, removes coffee object from list
+     * @param obj to be removed
+     * @return boolean
+     */
     @Override
     public boolean remove(Object obj) {
         if(obj instanceof String){
@@ -73,6 +81,11 @@ public class Coffee extends MenuItem implements Customizable{
         return false;
     }
 
+    /**
+     * overrides toString method and returns string form of
+     * coffee object
+     * @return string
+     */
     @Override
     public String toString(){
         if(!addIns.isEmpty()){
@@ -83,11 +96,5 @@ public class Coffee extends MenuItem implements Customizable{
             return this.cupSize + " black coffee " + "(" + this.quantity + ")";
         }
 
-    }
-
-    public static void main(String []args){
-        ArrayList <String> addIns = new ArrayList<>();
-        Coffee coffee = new Coffee("Tall",addIns, 1);
-        System.out.println(coffee.toString());
     }
 }

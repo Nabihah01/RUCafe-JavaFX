@@ -1,9 +1,9 @@
 package com.example.project4;
 
 /**
- * Three different types of donuts: yeast donut, cake donut and donut holes.
- * Each type of donuts includes a variety of flavors.
- * Regardless of the flavors, a yeast donut is $1.59, a cake donut is $1.79, and a donut hole is $0.39.
+ * This class extends MenuItem and represents a donut object,
+ * has three attributes-type, quantity, and flavor
+ * @author Nabihah, Maryam
  */
 public class Donut extends MenuItem{
     private String donutType;
@@ -13,11 +13,23 @@ public class Donut extends MenuItem{
     private static final double CAKE = 1.79;
     private static final double HOLE = 0.39;
 
+    /**
+     * Constructor for donut
+     * @param donutType type of donut
+     * @param donutFlavor flavor of donut
+     * @param donutQuantity quantity of donut selected
+     */
     public Donut(String donutType, String donutFlavor, int donutQuantity){
         this.donutType = donutType;
         this.donutQuantity = donutQuantity;
         this.donutFlavor = donutFlavor;
     }
+
+    /**
+     * overrides itemPrice method in MenuItem and calculates
+     * total for donut.
+     * @return price of donut
+     */
     @Override
     public double itemPrice(){
         if(donutType.equals("Yeast")){
@@ -30,18 +42,11 @@ public class Donut extends MenuItem{
         }
     }
 
-    public String getDonutType() {
-        return donutType;
-    }
-
-    public String getDonutFlavor() {
-        return donutFlavor;
-    }
-
-    public int getDonutQuantity() {
-        return donutQuantity;
-    }
-
+    /**
+     * overrides toString method and returns string form of
+     * donut object
+     * @return string
+     */
     @Override
     public String toString(){
         if(donutType.equals("Donut Holes")) {
@@ -49,9 +54,5 @@ public class Donut extends MenuItem{
         } else {
             return this.donutFlavor + " " + this.donutType + " donut " + "(" + this.donutQuantity + ")";
         }
-    }
-    public static void main(String []args){
-        Donut donut = new Donut("cake","strawberry", 1);
-        System.out.println(donut.toString());
     }
 }

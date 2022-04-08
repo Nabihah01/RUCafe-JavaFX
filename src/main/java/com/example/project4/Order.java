@@ -2,27 +2,32 @@ package com.example.project4;
 
 import java.util.ArrayList;
 
-// this is for one individual order. list of all items user ordered and the order number for the user.
 /**
  *  An instance of this class has a unique order number
  *  and keeps the list of menu items added by the user.
- *  This class must implement the Customizable interface above,
- *  to provide the behavior of adding and removing menu items
+ *   @author Nabihah, Maryam
  */
 public class Order implements Customizable {
-    //should we add orderTotal?
     private ArrayList<MenuItem> orders;
     private int orderNumber;
     private double total;
-    private double salesTax;
-    private double subTotal;
 
+    /**
+     * constructor for order object
+     * @param orders arrayList
+     * @param orderNumber int
+     */
     public Order(ArrayList<MenuItem> orders, int orderNumber){
         this.orders = orders;
         this.orderNumber = orderNumber;
         this.total = 0;
     }
 
+    /**
+     * overrides method, adds new order object to list
+     * @param obj object to be added
+     * @return boolean
+     */
     @Override
     public boolean add(Object obj) {
         if(obj instanceof MenuItem){
@@ -33,6 +38,11 @@ public class Order implements Customizable {
         return false;
     }
 
+    /**
+     * overrides method, removes order object to list
+     * @param obj object to be removed
+     * @return boolean
+     */
     @Override
     public boolean remove(Object obj) {
         if(obj instanceof MenuItem){
@@ -43,18 +53,33 @@ public class Order implements Customizable {
         return false;
     }
 
+    /**
+     * getter method for orders
+     * @return orders
+     */
     public ArrayList<MenuItem> getOrders() {
         return orders;
     }
 
+    /**
+     * getter method for ordernumber
+     * @return order number
+     */
     public int getOrderNumber() {
         return orderNumber;
     }
 
+    /**
+     * setter method for total amount for order
+     */
     public void setTotal(double total) {
         this.total = total;
     }
 
+    /**
+     * calculates total for order
+     * @return total
+     */
     public double getTotal() {
         double total = 0;
         for(int i = 0; i < orders.size(); i++) {
@@ -63,6 +88,10 @@ public class Order implements Customizable {
         return total;
     }
 
+    /**
+     * overrides toString method
+     * @return string form of order object
+     */
     @Override
     public String toString(){
         StringBuilder userOrders = new StringBuilder();

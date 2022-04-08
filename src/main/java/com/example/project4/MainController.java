@@ -22,6 +22,11 @@ import java.util.ArrayList;
  * remove all print statements
  */
 
+/**
+ A GUI class which allows user to select ordering coffee,
+ ordering donuts, viewing their basket, and viewing store orders.
+ @author Maryam, Nabihah
+ */
 public class MainController {
     //stores a user's orders
     private int orderNum = 1;
@@ -33,19 +38,34 @@ public class MainController {
     private Stage orderBaskStage = new Stage();
     private Stage storeOrderStage = new Stage();
 
+    /**
+     * Constructor for class
+     */
     public MainController() {
         this.yourOrder = new Order(new ArrayList<>(), orderNum);
         this.storeOrders = new StoreOrders();
     }
 
+    /**
+     * getter method for yourOrder
+     * @return order object - yourOrder
+     */
     public Order getYourOrder() {
         return yourOrder;
     }
 
+    /**
+     * getter method for storeOrders
+     * @return storeOrder object - storeOrders
+     */
     public StoreOrders getStoreOrders() {
         return storeOrders;
     }
 
+    /**
+     * method adds menuitem to order list and calculates price
+     * @param item menuitem to be added
+     */
     public void addToOrder(MenuItem item){
         yourOrder.add(item);
         if (item instanceof Coffee) {
@@ -55,9 +75,13 @@ public class MainController {
             price += item.itemPrice();
         }
         yourOrder.setTotal(price);
-        System.out.println(yourOrder.toString() + " price : " + price + " orderNum: "+ orderNum);
+        System.out.println(yourOrder.toString());
     }
 
+    /**
+     * method removes menuitem from order list and calculates price
+     * @param item menuitem to be removed
+     */
     public void removeFromOrder(MenuItem item) {
         yourOrder.remove(item);
         if (item instanceof Coffee) {
@@ -69,13 +93,21 @@ public class MainController {
         yourOrder.setTotal(price);
     }
 
+    /**
+     * method adds order to storeOrders and resets fields
+     */
     public void placeOrder(){
         storeOrders.add(yourOrder);
+        System.out.println(storeOrders.getStoreOrdersArray());
         orderNum++;
         price = 0;
         yourOrder = new Order(new ArrayList<MenuItem>(), orderNum);
     }
 
+    /**
+     * opens new window for ordering coffee
+     * @param event an Event representing some type of action
+     */
     @FXML
      void orderCoffee(ActionEvent event) {
         try {
@@ -100,6 +132,10 @@ public class MainController {
         }
     }
 
+    /**
+     * opens new window for ordering donuts
+     * @param event an Event representing some type of action
+     */
     @FXML
     void orderDonuts(ActionEvent event) {
         try {
@@ -124,6 +160,10 @@ public class MainController {
 
     }
 
+    /**
+     * opens new window for viewing store orders
+     * @param event an Event representing some type of action
+     */
     @FXML
     void viewStoreOrders(ActionEvent event) {
         try {
@@ -148,6 +188,10 @@ public class MainController {
 
     }
 
+    /**
+     * opens new window for viewing user order
+     * @param event an Event representing some type of action
+     */
     @FXML
     void viewYourOrder(ActionEvent event) {
         try {
