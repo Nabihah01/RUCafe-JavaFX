@@ -13,7 +13,6 @@ import java.util.ArrayList;
 
 /**
  * TO DO:
- * menu closes everything closes
  * fix null ptr exception for storeOrders
  * javadoc comments
  * system testing
