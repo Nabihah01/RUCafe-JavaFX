@@ -95,6 +95,9 @@ public class OrderingBasketController {
             a.show();
             return;
         }
+        Alert a = new Alert(Alert.AlertType.CONFIRMATION);
+        a.setContentText("Item has been removed");
+        a.show();
         userOrders.getItems().remove(item);
         mainController.removeFromOrder(item);
         displayYourOrderTotal();
