@@ -12,6 +12,10 @@ import javafx.scene.control.TextField;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
+/**
+ A GUI class which allows user to order coffee
+ @author Nabihah, Maryam
+ */
 public class OrderingCoffeeController {
     protected MainController mainController;
     protected static final DecimalFormat df = new DecimalFormat("###,##0.00");
@@ -46,10 +50,19 @@ public class OrderingCoffeeController {
 
     ArrayList<String> addIns = new ArrayList<>();
 
+    /**
+     * Stores main controller for future use
+     * @param main the main application layout controller
+     */
     public void setMainController(MainController main){
         mainController = main;
     }
 
+    /**
+     * This method is called to initialize controller after root element has been
+     * processed. The choices for quantity and size are set. Default value of coffee size is
+     * set to short, default quantity is set to 1, and total to 1.69.
+     */
     @FXML
     void initialize() {
         coffeeQuantity.setItems(quantity);
@@ -59,6 +72,10 @@ public class OrderingCoffeeController {
         coffeeTotal.setText("1.69");
     }
 
+    /**
+     * Event Handler for when cream add-In is selected
+     * @param event an Event representing some type of action
+     */
     @FXML
     void creamSelected(ActionEvent event) {
         double price = Double.parseDouble(coffeeTotal.getText());
@@ -74,6 +91,10 @@ public class OrderingCoffeeController {
         coffeeTotal.setText(String.valueOf(df.format(price)));
     }
 
+    /**
+     * Event Handler for when milk is selected
+     * @param event an Event representing some type of action
+     */
     @FXML
     void milkSelected(ActionEvent event) {
         double price = Double.parseDouble(coffeeTotal.getText());
@@ -89,6 +110,10 @@ public class OrderingCoffeeController {
         coffeeTotal.setText(String.valueOf(df.format(price)));
     }
 
+    /**
+     * Event Handler for when caramel is selected
+     * @param event an Event representing some type of action
+     */
     @FXML
     void caramelSelected(ActionEvent event) {
         double price = Double.parseDouble(coffeeTotal.getText());
@@ -104,6 +129,10 @@ public class OrderingCoffeeController {
         coffeeTotal.setText(String.valueOf(df.format(price)));
     }
 
+    /**
+     * Event Handler for when syrup is selected
+     * @param event an Event representing some type of action
+     */
     @FXML
     void syrupSelected(ActionEvent event) {
         double price = Double.parseDouble(coffeeTotal.getText());
@@ -118,6 +147,11 @@ public class OrderingCoffeeController {
         }
         coffeeTotal.setText(String.valueOf(df.format(price)));
     }
+
+    /**
+     * Event Handler for when whipped cream is selected
+     * @param event an Event representing some type of action
+     */
     @FXML
     void whippedSelected(ActionEvent event) {
         double price = Double.parseDouble(coffeeTotal.getText());
@@ -133,6 +167,10 @@ public class OrderingCoffeeController {
         coffeeTotal.setText(String.valueOf(df.format(price)));
     }
 
+    /**
+     * Event Handler for when user selects quantity
+     * @param event an Event representing some type of action
+     */
     @FXML
     void quantitySelected(ActionEvent event) {
         Coffee coffeeOrder = new Coffee(coffeeSize.getSelectionModel().getSelectedItem(), addIns, coffeeQuantity.getSelectionModel().getSelectedItem());
@@ -140,6 +178,10 @@ public class OrderingCoffeeController {
         coffeeTotal.setText(String.valueOf(df.format(price)));
     }
 
+    /**
+     * Event Handler for when user selects size
+     * @param event an Event representing some type of action
+     */
     @FXML
     void sizeSelected(ActionEvent event) {
         Coffee coffeeOrder = new Coffee(coffeeSize.getSelectionModel().getSelectedItem(), addIns, coffeeQuantity.getSelectionModel().getSelectedItem());
@@ -147,20 +189,12 @@ public class OrderingCoffeeController {
         coffeeTotal.setText(String.valueOf(df.format(price)));
     }
 
+    /**
+     * Event Handler for when user clicks Add to Order button
+     * @param event an Event representing some type of action
+     */
     @FXML
     void coffeeAddtoOrder(ActionEvent event) {
-//        addIns = new ArrayList<>();
-//        if(cream.isSelected())
-//            addIns.add("cream");
-//        if(caramel.isSelected())
-//            addIns.add("caramel");
-//        if(syrup.isSelected())
-//            addIns.add("syrup");
-//        if(milk.isSelected())
-//            addIns.add("milk");
-//        if(whipped.isSelected())
-//            addIns.add("whipped cream");
-
         Coffee coffeeOrder = new Coffee(coffeeSize.getSelectionModel().getSelectedItem(), (ArrayList<String>) addIns.clone(), coffeeQuantity.getSelectionModel().getSelectedItem());
         mainController.addToOrder(coffeeOrder);
 
@@ -177,7 +211,5 @@ public class OrderingCoffeeController {
         Alert a = new Alert(Alert.AlertType.CONFIRMATION);
         a.setContentText("Coffee Order Placed");
         a.show();
-
     }
-
 }

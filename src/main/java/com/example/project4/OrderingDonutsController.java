@@ -11,6 +11,10 @@ import javafx.scene.control.TextField;
 
 import java.text.DecimalFormat;
 
+/**
+ A GUI class which allows user to order donuts
+ @author Nabihah, Maryam
+ */
 public class OrderingDonutsController {
     protected MainController mainController;
     protected static final DecimalFormat df = new DecimalFormat("###,##0.00");
@@ -35,10 +39,19 @@ public class OrderingDonutsController {
     @FXML
     private TextField subtotal;
 
+    /**
+     * Stores main controller for future use
+     * @param main the main application layout controller
+     */
     public void setMainController(MainController main){
         mainController = main;
     }
 
+    /**
+     * This method is called to initialize controller after root element has been
+     * processed. The choices for donut types, donut quantity and donut flavor are set.
+     * Total default is 0.00
+     */
     @FXML
     void initialize() {
         donutTypes.setItems(types);
@@ -47,8 +60,12 @@ public class OrderingDonutsController {
         subtotal.setText("0.00");
     }
 
+    /**
+     * Event Handler for when user clicks "remove selected item button"
+     * @param event an Event representing some type of action
+     */
     @FXML
-    void removeSelected() {
+    void removeSelected(ActionEvent event) {
         MenuItem item = orderList.getSelectionModel().getSelectedItem();
         if(item == null){
             Alert a = new Alert(Alert.AlertType.ERROR);
@@ -61,6 +78,10 @@ public class OrderingDonutsController {
         subtotal.setText(String.valueOf(df.format(total)));
     }
 
+    /**
+     * Event Handler for when user clicks "add to list" button
+     * @param event an Event representing some type of action
+     */
     @FXML
     void addToListView(ActionEvent event) {
         String donutType = donutTypes.getSelectionModel().getSelectedItem();
@@ -83,6 +104,10 @@ public class OrderingDonutsController {
         donutTypes.getSelectionModel().clearSelection();
     }
 
+    /**
+     * Event Handler for when user clicks "Add to Order" button
+     * @param event an Event representing some type of action
+     */
     @FXML
     void donutAddToOrder(ActionEvent event) {
         ObservableList<MenuItem> order = orderList.getItems();

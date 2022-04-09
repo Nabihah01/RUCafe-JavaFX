@@ -14,6 +14,11 @@ import java.io.PrintWriter;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
+/**
+ A GUI class which allows user to view all orders that have been placed, cancel any orders,
+ and export order to text file.
+ @author Nabihah, Maryam
+ */
 public class StoreOrdersController {
     protected MainController mainController;
     protected ObservableList<Integer> orderNumbers = FXCollections.observableArrayList();
@@ -29,6 +34,12 @@ public class StoreOrdersController {
     @FXML
     private ListView<MenuItem> storeOrdersList;
 
+    /**
+     * Stores main controller for future use
+     * gets all the order numbers of orders that have been placed
+     * and sets combo box to display first order number by default
+     * @param main the main application layout controller
+     */
     public void setMainController(MainController main){
         mainController = main;
         for(int i = 0; i < mainController.getStoreOrders().getStoreOrdersArray().size(); i++) {
@@ -45,14 +56,16 @@ public class StoreOrdersController {
 
         }
         storeOrderNumber.setItems(orderNumbers);
-        //show first one by default
         storeOrderNumber.setValue(orderNumbers.get(0));
     }
 
+    /**
+     * Event Handler for when user selects an order number for which order to display
+     * @param event an Event representing some type of action
+     */
     @FXML
     void selectOrderNum(ActionEvent event) {
         storeOrdersList.getItems().clear();
-        System.out.println("selectnum");
         if(storeOrderNumber.getValue() == null){
             return;
         }
@@ -66,6 +79,10 @@ public class StoreOrdersController {
         }
     }
 
+    /**
+     * Event Handler for when user clicks "Cancel Order" button
+     * @param event an Event representing some type of action
+     */
     @FXML
     void cancelStoreOrder(ActionEvent event) {
         Integer orderNum = storeOrderNumber.getSelectionModel().getSelectedItem();
@@ -75,12 +92,9 @@ public class StoreOrdersController {
             a.show();
             return;
         }
-        //remove from ListView and clear total
         storeOrdersList.getItems().clear();
         storeOrderTotal.clear();
-        //show next order by default??
 
-        //remove order from storeOrder arraylist
         for(int i = 0; i < mainController.getStoreOrders().getStoreOrdersArray().size(); i++){
             if(mainController.getStoreOrders().getStoreOrdersArray().get(i).getOrderNumber() == orderNum){
                 mainController.getStoreOrders().remove(mainController.getStoreOrders().getStoreOrdersArray().get(i));
@@ -88,7 +102,6 @@ public class StoreOrdersController {
             }
         }
 
-        //remove number from OrderNums list and update
         storeOrderNumber.getSelectionModel().clearSelection();
         orderNumbers.remove(orderNum);
         storeOrderNumber.setItems(orderNumbers);
@@ -98,10 +111,12 @@ public class StoreOrdersController {
         Alert a = new Alert(Alert.AlertType.CONFIRMATION);
         a.setContentText("Order has been cancelled.");
         a.show();
-        System.out.println("cancelled");
-
     }
 
+    /**
+     * Event Handler for when user clicks "Export Orders" button
+     * @param event an Event representing some type of action
+     */
     @FXML
     void exportStoreOrders(ActionEvent event) {
         if(orderNumbers.isEmpty()){

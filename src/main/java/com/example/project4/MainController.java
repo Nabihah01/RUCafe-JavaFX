@@ -26,9 +26,9 @@ import java.util.ArrayList;
  */
 public class MainController {
     private int orderNum = 1;
-    private Order yourOrder = new Order(new ArrayList<>(), orderNum);
+    private Order yourOrder;
     private double price = 0;
-    private StoreOrders storeOrders = new StoreOrders();
+    private StoreOrders storeOrders;
     private Stage coffeeStage = new Stage();
     private Stage donutStage = new Stage();
     private Stage orderBaskStage = new Stage();
@@ -38,8 +38,8 @@ public class MainController {
      * Constructor for class
      */
     public MainController() {
-        //this.yourOrder = new Order(new ArrayList<>(), orderNum);
-        //this.storeOrders = new StoreOrders();
+        this.yourOrder = new Order(new ArrayList<>(), orderNum);
+        this.storeOrders = new StoreOrders();
     }
 
     /**

@@ -88,9 +88,6 @@ public class OrderingBasketController {
      */
     @FXML
     void removeSelectedItem(ActionEvent event) {
-        ObservableList<MenuItem> order = userOrders.getItems();
-
-        //remove from ListView
         MenuItem item = userOrders.getSelectionModel().getSelectedItem();
         if(item == null){
             Alert a = new Alert(Alert.AlertType.ERROR);
@@ -99,9 +96,7 @@ public class OrderingBasketController {
             return;
         }
         userOrders.getItems().remove(item);
-        //remove from order arraylist
         mainController.removeFromOrder(item);
-        //update price
         displayYourOrderTotal();
     }
 
