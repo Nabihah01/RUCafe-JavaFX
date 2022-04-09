@@ -88,7 +88,7 @@ public class OrderingBasketController {
     }
 
     void displayYourOrderTotal() {
-        double subtotal = mainController.getYourOrder().getTotal();
+        double subtotal = mainController.getYourOrder().getPrice();
         orderSubTotal.setText(String.valueOf(df.format(subtotal)));
 
         double salesTax = (6.625 / 100) * subtotal;
@@ -96,6 +96,8 @@ public class OrderingBasketController {
 
         double total = subtotal + salesTax;
         orderTotal.setText(String.valueOf(df.format(total)));
+        mainController.getYourOrder().setTotal(total);
+        System.out.println(mainController.getYourOrder().getOrderNumber() + " total is " + mainController.getYourOrder().getTotal());
 
     }
 

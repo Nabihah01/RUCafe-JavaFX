@@ -16,7 +16,7 @@ import java.util.ArrayList;
  * fix null ptr exception for storeOrders
  * javadoc comments
  * system testing
- * remove all print statements
+ * remove all print statements, comments
  */
 
 /**

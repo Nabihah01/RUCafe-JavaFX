@@ -52,12 +52,11 @@ public class StoreOrdersController {
     @FXML
     void selectOrderNum(ActionEvent event) {
         storeOrdersList.getItems().clear();
-
+        System.out.println("selectnum");
+        if(storeOrderNumber.getValue() == null){
+            return;
+        }
         for(int i = 0 ; i < mainController.getStoreOrders().getStoreOrdersArray().size(); i++) {
-            if(storeOrderNumber.getValue() == null) {
-                System.out.println("No order num selected");
-                return;
-            }
             if(storeOrderNumber.getValue().equals(mainController.getStoreOrders().getStoreOrdersArray().get(i).getOrderNumber())){
                 selectedOrder.addAll(mainController.getStoreOrders().getStoreOrdersArray().get(i).getOrders());
                 storeOrdersList.setItems(selectedOrder);
@@ -96,12 +95,21 @@ public class StoreOrdersController {
         if(!orderNumbers.isEmpty()) {
             storeOrderNumber.setValue(orderNumbers.get(0));
         }
+        Alert a = new Alert(Alert.AlertType.CONFIRMATION);
+        a.setContentText("Order has been cancelled.");
+        a.show();
+        System.out.println("cancelled");
 
     }
 
     @FXML
     void exportStoreOrders(ActionEvent event) {
-        //put try-catch for exception
+        if(orderNumbers.isEmpty()){
+            Alert a = new Alert(Alert.AlertType.ERROR);
+            a.setContentText("No orders to export");
+            a.show();
+            return;
+        }
         try {
             FileChooser chooser = new FileChooser();
             chooser.setTitle("Open Target File for the Export");
@@ -135,6 +143,9 @@ public class StoreOrdersController {
             a.setContentText("Cannot export orders. Please try again.");
             a.show();
         }
+        Alert a = new Alert(Alert.AlertType.CONFIRMATION);
+        a.setContentText("All orders have been exported to file");
+        a.show();
 
     }
 

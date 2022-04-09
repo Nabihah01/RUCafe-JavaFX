@@ -77,10 +77,18 @@ public class Order implements Customizable {
     }
 
     /**
+     * getter method for total
+     * @return total for order obj
+     */
+    public double getTotal() {
+        return total;
+    }
+
+    /**
      * calculates total for order
      * @return total
      */
-    public double getTotal() {
+    public double getPrice() {
         double total = 0;
         for(int i = 0; i < orders.size(); i++) {
             total += orders.get(i).itemPrice();
