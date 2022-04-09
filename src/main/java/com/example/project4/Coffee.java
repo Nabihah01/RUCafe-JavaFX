@@ -3,7 +3,7 @@ package com.example.project4;
 import java.util.ArrayList;
 
 /**
- * This class extends MenuItem and represents coffee object.
+ * This class extends MenuItem and represents a coffee object.
  * Has three attributes - cupsize, addins, and quantity
  *  @author Nabihah, Maryam
  */
@@ -11,12 +11,17 @@ public class Coffee extends MenuItem implements Customizable{
     private String cupSize;
     private ArrayList<String> addIns;
     private int quantity;
+    private static final double ADDIN_PRICE = 0.30;
+    private static final double SHORT = 1.69;
+    private static final double TALL = 2.09;
+    private static final double GRANDE = 2.49;
+    private static final double VENTI = 2.89;
 
     /**
      * Constructor for coffee object
      * @param cupSize size of coffee
-     * @param addIns addins
-     * @param quantity quantity
+     * @param addIns list of addIns
+     * @param quantity how many cups of coffee
      */
     public Coffee(String cupSize, ArrayList<String> addIns, int quantity){
         this.cupSize = cupSize;
@@ -27,32 +32,32 @@ public class Coffee extends MenuItem implements Customizable{
     /**
      * overrides itemPrice method, and calculates price for
      * coffee
-     * @return price of coffee object
+     * @return double, price of coffee object
      */
     @Override
     public double itemPrice() {
         double price = 0;
         int addIn = addIns.size();
-        price += addIn * 0.30;
+        price += addIn * ADDIN_PRICE;
         switch (cupSize) {
             case "Short":
-                price += 1.69;
+                price += SHORT;
                 break;
             case "Tall":
-                price += 2.09;
+                price += TALL;
                 break;
             case "Grande":
-                price += 2.49;
+                price += GRANDE;
                 break;
             case "Venti":
-                price += 2.89;
+                price += VENTI;
                 break;
         }
         return price * quantity;
     }
 
     /**
-     * overrides method, adds new coffee object to list
+     * overrides method, adds addIn to addIns list
      * @param obj to be added
      * @return boolean
      */
@@ -67,7 +72,7 @@ public class Coffee extends MenuItem implements Customizable{
     }
 
     /**
-     * overrides method, removes coffee object from list
+     * overrides method, removes addIn from addIn list
      * @param obj to be removed
      * @return boolean
      */

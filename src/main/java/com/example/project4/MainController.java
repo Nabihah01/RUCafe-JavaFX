@@ -25,7 +25,6 @@ import java.util.ArrayList;
  @author Maryam, Nabihah
  */
 public class MainController {
-    //stores a user's orders
     private int orderNum = 1;
     private Order yourOrder = new Order(new ArrayList<>(), orderNum);
     private double price = 0;
@@ -90,11 +89,10 @@ public class MainController {
     }
 
     /**
-     * method adds order to storeOrders and resets fields
+     * method adds yourOrder to storeOrders and resets fields
      */
     public void placeOrder(){
         storeOrders.add(yourOrder);
-        System.out.println(storeOrders.getStoreOrdersArray());
         orderNum++;
         price = 0;
         yourOrder = new Order(new ArrayList<MenuItem>(), orderNum);

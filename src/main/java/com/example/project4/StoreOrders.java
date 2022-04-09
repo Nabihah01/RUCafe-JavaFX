@@ -3,7 +3,7 @@ package com.example.project4;
 import java.util.ArrayList;
 
 /**
- * An instance of this class keeps a list of orders placed by the user.
+ * An instance of this class keeps a list of all orders placed
  * @author Nabihah, Maryam
  */
 public class StoreOrders implements Customizable {

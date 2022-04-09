@@ -146,9 +146,5 @@ public class StoreOrdersController {
         Alert a = new Alert(Alert.AlertType.CONFIRMATION);
         a.setContentText("All orders have been exported to file");
         a.show();
-
     }
-
-
-
 }

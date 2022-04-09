@@ -12,6 +12,11 @@ import javafx.stage.Stage;
 
 import java.text.DecimalFormat;
 
+/**
+ A GUI class which allows user to view their current order (basket),
+ remove any items from the basket, and place their order
+ @author Nabihah, Maryam
+ */
 public class OrderingBasketController {
     protected MainController mainController;
     private ObservableList<MenuItem> order = FXCollections.observableArrayList();
@@ -29,6 +34,11 @@ public class OrderingBasketController {
     @FXML
     private ListView<MenuItem> userOrders;
 
+    /**
+     * sets main controller and gets all the items currently in the user's order
+     * and displays those items along with its subtotal, sales tax, and total
+     * @param main the main application layout controller
+     */
     public void setMainController(MainController main){
         mainController = main;
 
@@ -48,6 +58,10 @@ public class OrderingBasketController {
         userOrders.setItems(order);
     }
 
+    /**
+     * Event Handler for when user clicks place order button
+     * @param event an Event representing some type of action
+     */
     @FXML
     void placeUserOrder(ActionEvent event) {
         ObservableList<MenuItem> order = userOrders.getItems();
@@ -68,6 +82,10 @@ public class OrderingBasketController {
         orderSubTotal.clear();
     }
 
+    /**
+     * Event Handler for when user clicks remove selected item button
+     * @param event an Event representing some type of action
+     */
     @FXML
     void removeSelectedItem(ActionEvent event) {
         ObservableList<MenuItem> order = userOrders.getItems();
@@ -87,6 +105,9 @@ public class OrderingBasketController {
         displayYourOrderTotal();
     }
 
+    /**
+     * calculates subtotal, total, and sales tax of order and displays it
+     */
     void displayYourOrderTotal() {
         double subtotal = mainController.getYourOrder().getPrice();
         orderSubTotal.setText(String.valueOf(df.format(subtotal)));
@@ -97,8 +118,6 @@ public class OrderingBasketController {
         double total = subtotal + salesTax;
         orderTotal.setText(String.valueOf(df.format(total)));
         mainController.getYourOrder().setTotal(total);
-        System.out.println(mainController.getYourOrder().getOrderNumber() + " total is " + mainController.getYourOrder().getTotal());
-
     }
 
 }

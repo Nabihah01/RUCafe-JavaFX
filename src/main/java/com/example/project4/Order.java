@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 /**
  *  An instance of this class has a unique order number
- *  and keeps the list of menu items added by the user.
+ *  and keeps the list of menu items added by the user (called orders).
  *   @author Nabihah, Maryam
  */
 public class Order implements Customizable {
@@ -26,7 +26,7 @@ public class Order implements Customizable {
     /**
      * overrides method, adds new order object to list
      * @param obj object to be added
-     * @return boolean
+     * @return true if successfully added, false otherwise
      */
     @Override
     public boolean add(Object obj) {
@@ -41,7 +41,7 @@ public class Order implements Customizable {
     /**
      * overrides method, removes order object to list
      * @param obj object to be removed
-     * @return boolean
+     * @return true if successfully removed, false otherwise
      */
     @Override
     public boolean remove(Object obj) {
@@ -55,7 +55,7 @@ public class Order implements Customizable {
 
     /**
      * getter method for orders
-     * @return orders
+     * @return ArrayList, orders
      */
     public ArrayList<MenuItem> getOrders() {
         return orders;
@@ -63,7 +63,7 @@ public class Order implements Customizable {
 
     /**
      * getter method for ordernumber
-     * @return order number
+     * @return int, order number
      */
     public int getOrderNumber() {
         return orderNumber;
@@ -78,7 +78,7 @@ public class Order implements Customizable {
 
     /**
      * getter method for total
-     * @return total for order obj
+     * @return double, total for order obj
      */
     public double getTotal() {
         return total;
@@ -86,7 +86,7 @@ public class Order implements Customizable {
 
     /**
      * calculates total for order
-     * @return total
+     * @return doublem total
      */
     public double getPrice() {
         double total = 0;

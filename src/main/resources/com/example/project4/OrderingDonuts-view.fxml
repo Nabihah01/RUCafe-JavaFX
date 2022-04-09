@@ -22,27 +22,27 @@
             <Font name="Gill Sans MT Condensed" size="24.0" />
          </font>
       </Label>
-      <ComboBox fx:id="donutQuantity" layoutX="148.0" layoutY="228.0" prefHeight="13.0" prefWidth="58.0" />
-      <ComboBox fx:id="donutFlavors" layoutX="148.0" layoutY="175.0" prefHeight="25.0" prefWidth="150.0" />
-      <ComboBox fx:id="donutTypes" layoutX="148.0" layoutY="132.0" prefHeight="23.0" prefWidth="150.0" />
+      <ComboBox fx:id="donutQuantity" layoutX="148.0" layoutY="228.0" prefHeight="13.0" prefWidth="58.0" style="-fx-background-color: #e94a84;" />
+      <ComboBox fx:id="donutFlavors" layoutX="148.0" layoutY="175.0" prefHeight="25.0" prefWidth="150.0" style="-fx-background-color: #e94a84;" />
+      <ComboBox fx:id="donutTypes" layoutX="148.0" layoutY="132.0" prefHeight="23.0" prefWidth="150.0" style="-fx-background-color: #e94a84;" />
       <Label layoutX="36.0" layoutY="226.0" prefHeight="30.0" prefWidth="88.0" text="Quantity">
          <font>
             <Font name="Gill Sans MT Condensed" size="24.0" />
          </font>
       </Label>
-      <ListView fx:id="orderList" layoutX="375.0" layoutY="96.0" prefHeight="184.0" prefWidth="191.0" style="-fx-background-color: #e94a84;" />
+      <ListView fx:id="orderList" layoutX="375.0" layoutY="96.0" prefHeight="184.0" prefWidth="191.0" style="-fx-background-color: white;" />
       <Label layoutX="80.0" layoutY="355.0" text="sub-total">
          <font>
             <Font name="Gill Sans MT" size="19.0" />
          </font>
       </Label>
       <TextField fx:id="subtotal" editable="false" layoutX="185.0" layoutY="354.0" prefHeight="23.0" prefWidth="150.0" text="0.00" />
-      <Button layoutX="480.0" layoutY="353.0" mnemonicParsing="false" onAction="#donutAddToOrder" text="Add to Order">
+      <Button layoutX="480.0" layoutY="353.0" mnemonicParsing="false" onAction="#donutAddToOrder" style="-fx-background-color: #e94a84;" text="Add to Order">
          <font>
             <Font name="Gill Sans MT" size="15.0" />
          </font>
       </Button>
-      <Button layoutX="80.0" layoutY="284.0" mnemonicParsing="false" onAction="#addToListView" text="Add to List">
+      <Button layoutX="80.0" layoutY="284.0" mnemonicParsing="false" onAction="#addToListView" style="-fx-background-color: #e94a84;" text="Add to List">
          <font>
             <Font name="Gill Sans MT" size="15.0" />
          </font>
@@ -52,7 +52,7 @@
             <Image url="@images/donut.jpg" />
          </image>
       </ImageView>
-      <Button layoutX="403.0" layoutY="286.0" mnemonicParsing="false" onAction="#removeSelected" text="Remove Selected Item">
+      <Button layoutX="403.0" layoutY="286.0" mnemonicParsing="false" onAction="#removeSelected" style="-fx-background-color: #e94a84;" text="Remove Selected Item">
          <font>
             <Font name="Gill Sans MT" size="13.0" />
          </font>

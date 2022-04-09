@@ -2,7 +2,7 @@ package com.example.project4;
 
 /**
  * This class extends MenuItem and represents a donut object,
- * has three attributes-type, quantity, and flavor
+ * has three attributes- type, quantity, and flavor
  * @author Nabihah, Maryam
  */
 public class Donut extends MenuItem{
@@ -28,7 +28,7 @@ public class Donut extends MenuItem{
     /**
      * overrides itemPrice method in MenuItem and calculates
      * total for donut.
-     * @return price of donut
+     * @return double, price of donut
      */
     @Override
     public double itemPrice(){
