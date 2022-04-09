@@ -14,8 +14,6 @@ import java.util.ArrayList;
 /**
  * TO DO:
  * menu closes everything closes
- * alert for when can't write to file
- * add total to when we export orders
  * fix null ptr exception for storeOrders
  * javadoc comments
  * system testing
@@ -30,9 +28,9 @@ import java.util.ArrayList;
 public class MainController {
     //stores a user's orders
     private int orderNum = 1;
-    private Order yourOrder;
+    private Order yourOrder = new Order(new ArrayList<>(), orderNum);
     private double price = 0;
-    private StoreOrders storeOrders;
+    private StoreOrders storeOrders = new StoreOrders();
     private Stage coffeeStage = new Stage();
     private Stage donutStage = new Stage();
     private Stage orderBaskStage = new Stage();
@@ -42,8 +40,8 @@ public class MainController {
      * Constructor for class
      */
     public MainController() {
-        this.yourOrder = new Order(new ArrayList<>(), orderNum);
-        this.storeOrders = new StoreOrders();
+        //this.yourOrder = new Order(new ArrayList<>(), orderNum);
+        //this.storeOrders = new StoreOrders();
     }
 
     /**
@@ -75,7 +73,6 @@ public class MainController {
             price += item.itemPrice();
         }
         yourOrder.setTotal(price);
-        System.out.println(yourOrder.toString());
     }
 
     /**
@@ -213,7 +210,6 @@ public class MainController {
             errorAlert.setContentText("Your order cannot be loaded. Please try again.");
             errorAlert.show();
         }
-
     }
 
 }

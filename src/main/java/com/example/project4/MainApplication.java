@@ -1,6 +1,7 @@
 package com.example.project4;
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.paint.Color;
@@ -25,8 +26,8 @@ public class MainApplication extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("Main-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 600, 400);
         stage.setTitle("RU Cafe!");
-        scene.setFill(Color.DARKSALMON);
         stage.setScene(scene);
+        stage.setOnHidden(e -> Platform.exit());
         stage.show();
     }
 

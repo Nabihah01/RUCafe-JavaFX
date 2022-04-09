@@ -5,56 +5,56 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project4.OrderingCoffeeController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: beige;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project4.OrderingCoffeeController">
    <children>
-      <Label layoutX="24.0" layoutY="33.0" text="Ordering Coffee">
+      <Label layoutX="24.0" layoutY="33.0" text="Ordering Coffee" textFill="#e94a84">
          <font>
             <Font name="Lucida Handwriting Italic" size="40.0" />
          </font>
       </Label>
-      <CheckBox fx:id="cream" layoutX="59.0" layoutY="148.0" mnemonicParsing="false" onAction="#creamSelected" text="Cream">
+      <CheckBox fx:id="cream" layoutX="59.0" layoutY="148.0" mnemonicParsing="false" onAction="#creamSelected" text="Cream" textFill="#e94a84">
          <font>
             <Font size="15.0" />
          </font>
       </CheckBox>
-      <CheckBox fx:id="caramel" layoutX="59.0" layoutY="192.0" mnemonicParsing="false" onAction="#caramelSelected" text="Caramel">
+      <CheckBox fx:id="caramel" layoutX="59.0" layoutY="192.0" mnemonicParsing="false" onAction="#caramelSelected" text="Caramel" textFill="#e94a84">
          <font>
             <Font size="15.0" />
          </font>
       </CheckBox>
-      <ComboBox fx:id="coffeeSize" layoutX="400.0" layoutY="146.0" onAction="#sizeSelected" prefWidth="150.0" promptText="Short" />
-      <CheckBox fx:id="whipped" layoutX="59.0" layoutY="236.0" mnemonicParsing="false" onAction="#whippedSelected" text="Whipped Cream">
+      <ComboBox fx:id="coffeeSize" layoutX="400.0" layoutY="146.0" onAction="#sizeSelected" prefWidth="150.0" promptText="Short" style="-fx-background-color: #e94a84;" />
+      <CheckBox fx:id="whipped" layoutX="59.0" layoutY="236.0" mnemonicParsing="false" onAction="#whippedSelected" text="Whipped Cream" textFill="#e94a84">
          <font>
             <Font size="15.0" />
          </font>
       </CheckBox>
-      <CheckBox fx:id="syrup" layoutX="211.0" layoutY="148.0" mnemonicParsing="false" onAction="#syrupSelected" text="Syrup">
+      <CheckBox fx:id="syrup" layoutX="211.0" layoutY="148.0" mnemonicParsing="false" onAction="#syrupSelected" text="Syrup" textFill="#e94a84">
          <font>
             <Font size="15.0" />
          </font>
       </CheckBox>
-      <CheckBox fx:id="milk" layoutX="211.0" layoutY="192.0" mnemonicParsing="false" onAction="#milkSelected" text="Milk">
+      <CheckBox fx:id="milk" layoutX="211.0" layoutY="192.0" mnemonicParsing="false" onAction="#milkSelected" text="Milk" textFill="#e94a84">
          <font>
             <Font size="15.0" />
          </font>
       </CheckBox>
-      <Label layoutX="356.0" layoutY="148.0" text="Size:">
+      <Label layoutX="356.0" layoutY="148.0" text="Size:" textFill="#e94a84">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <Label layoutX="326.0" layoutY="199.0" text="Quantity:">
+      <Label layoutX="326.0" layoutY="199.0" text="Quantity:" textFill="#e94a84">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <Label layoutX="322.0" layoutY="280.0" text="Sub-Total:">
+      <Label layoutX="322.0" layoutY="280.0" text="Sub-Total:" textFill="#e94a84">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <TextField fx:id="coffeeTotal" editable="false" layoutX="404.0" layoutY="278.0" text="1.69" />
-      <Button layoutX="421.0" layoutY="343.0" mnemonicParsing="false" onAction="#coffeeAddtoOrder" text="Add to Order">
+      <TextField fx:id="coffeeTotal" editable="false" layoutX="404.0" layoutY="278.0" style="-fx-background-color: #e94a84;" text="1.69" />
+      <Button layoutX="421.0" layoutY="343.0" mnemonicParsing="false" onAction="#coffeeAddtoOrder" style="-fx-background-color: #e94a84;" text="Add to Order">
          <font>
             <Font size="15.0" />
          </font>
@@ -64,6 +64,6 @@
             <Image url="@images/coffeewindow.jpg" />
          </image>
       </ImageView>
-      <ComboBox fx:id="coffeeQuantity" layoutX="400.0" layoutY="197.0" onAction="#quantitySelected" prefWidth="150.0" promptText="1" />
+      <ComboBox fx:id="coffeeQuantity" layoutX="400.0" layoutY="197.0" onAction="#quantitySelected" prefWidth="150.0" promptText="1" style="-fx-background-color: #e94a84;" />
    </children>
 </AnchorPane>

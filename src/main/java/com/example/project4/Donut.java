@@ -50,7 +50,7 @@ public class Donut extends MenuItem{
     @Override
     public String toString(){
         if(donutType.equals("Donut Holes")) {
-            return this.donutFlavor + " " + this.donutType + "(" + this.donutQuantity + ")";
+            return this.donutFlavor + " " + this.donutType + " (" + this.donutQuantity + ")";
         } else {
             return this.donutFlavor + " " + this.donutType + " donut " + "(" + this.donutQuantity + ")";
         }

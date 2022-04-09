@@ -17,9 +17,6 @@ public class OrderingCoffeeController {
     protected static final DecimalFormat df = new DecimalFormat("###,##0.00");
 
     @FXML
-    private CheckBox caramel;
-
-    @FXML
     private ComboBox<Integer> coffeeQuantity;
     protected ObservableList<Integer> quantity = FXCollections.observableArrayList(
             1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12);
@@ -31,6 +28,9 @@ public class OrderingCoffeeController {
 
     @FXML
     private TextField coffeeTotal;
+
+    @FXML
+    private CheckBox caramel;
 
     @FXML
     private CheckBox cream;
@@ -149,19 +149,19 @@ public class OrderingCoffeeController {
 
     @FXML
     void coffeeAddtoOrder(ActionEvent event) {
-        addIns = new ArrayList<>();
-        if(cream.isSelected())
-            addIns.add("cream");
-        if(caramel.isSelected())
-            addIns.add("caramel");
-        if(syrup.isSelected())
-            addIns.add("syrup");
-        if(milk.isSelected())
-            addIns.add("milk");
-        if(whipped.isSelected())
-            addIns.add("whipped cream");
-        System.out.println(addIns);
-        Coffee coffeeOrder = new Coffee(coffeeSize.getSelectionModel().getSelectedItem(), addIns, coffeeQuantity.getSelectionModel().getSelectedItem());
+//        addIns = new ArrayList<>();
+//        if(cream.isSelected())
+//            addIns.add("cream");
+//        if(caramel.isSelected())
+//            addIns.add("caramel");
+//        if(syrup.isSelected())
+//            addIns.add("syrup");
+//        if(milk.isSelected())
+//            addIns.add("milk");
+//        if(whipped.isSelected())
+//            addIns.add("whipped cream");
+
+        Coffee coffeeOrder = new Coffee(coffeeSize.getSelectionModel().getSelectedItem(), (ArrayList<String>) addIns.clone(), coffeeQuantity.getSelectionModel().getSelectedItem());
         mainController.addToOrder(coffeeOrder);
 
         whipped.setSelected(false);

@@ -90,7 +90,7 @@ public class Coffee extends MenuItem implements Customizable{
     public String toString(){
         if(!addIns.isEmpty()){
             return this.cupSize + " coffee with " + String.join(", ", this.addIns) +
-                    "(" + this.quantity + ")";
+                    " (" + this.quantity + ")";
         }
         else {
             return this.cupSize + " black coffee " + "(" + this.quantity + ")";
