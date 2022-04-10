@@ -78,16 +78,17 @@ public class OrderingCoffeeController {
      */
     @FXML
     void creamSelected(ActionEvent event) {
-        double price = Double.parseDouble(coffeeTotal.getText());
-        if(!cream.isSelected()) {
+        String cupSize = coffeeSize.getSelectionModel().getSelectedItem();
+        Integer quantity = coffeeQuantity.getSelectionModel().getSelectedItem();
+        if(!milk.isSelected()) {
             if(addIns.contains("cream"))
                 addIns.remove("cream");
-            price -= 0.30;
         }
         else {
-            price += 0.30;
             addIns.add("cream");
         }
+        Coffee coffee = new Coffee(cupSize, addIns, quantity);
+        double price = coffee.itemPrice();
         coffeeTotal.setText(String.valueOf(df.format(price)));
     }
 
@@ -97,16 +98,17 @@ public class OrderingCoffeeController {
      */
     @FXML
     void milkSelected(ActionEvent event) {
-        double price = Double.parseDouble(coffeeTotal.getText());
+        String cupSize = coffeeSize.getSelectionModel().getSelectedItem();
+        Integer quantity = coffeeQuantity.getSelectionModel().getSelectedItem();
         if(!milk.isSelected()) {
             if(addIns.contains("milk"))
                 addIns.remove("milk");
-            price -= 0.30;
         }
         else {
-            price += 0.30;
             addIns.add("milk");
         }
+        Coffee coffee = new Coffee(cupSize, addIns, quantity);
+        double price = coffee.itemPrice();
         coffeeTotal.setText(String.valueOf(df.format(price)));
     }
 
@@ -116,16 +118,17 @@ public class OrderingCoffeeController {
      */
     @FXML
     void caramelSelected(ActionEvent event) {
-        double price = Double.parseDouble(coffeeTotal.getText());
-        if(!caramel.isSelected()) {
+        String cupSize = coffeeSize.getSelectionModel().getSelectedItem();
+        Integer quantity = coffeeQuantity.getSelectionModel().getSelectedItem();
+        if(!milk.isSelected()) {
             if(addIns.contains("caramel"))
                 addIns.remove("caramel");
-            price -= 0.30;
         }
         else {
-            price += 0.30;
             addIns.add("caramel");
         }
+        Coffee coffee = new Coffee(cupSize, addIns, quantity);
+        double price = coffee.itemPrice();
         coffeeTotal.setText(String.valueOf(df.format(price)));
     }
 
@@ -135,16 +138,17 @@ public class OrderingCoffeeController {
      */
     @FXML
     void syrupSelected(ActionEvent event) {
-        double price = Double.parseDouble(coffeeTotal.getText());
-        if(!syrup.isSelected()) {
-            price -= 0.30;
+        String cupSize = coffeeSize.getSelectionModel().getSelectedItem();
+        Integer quantity = coffeeQuantity.getSelectionModel().getSelectedItem();
+        if(!milk.isSelected()) {
             if(addIns.contains("syrup"))
                 addIns.remove("syrup");
         }
         else {
-            price += 0.30;
             addIns.add("syrup");
         }
+        Coffee coffee = new Coffee(cupSize, addIns, quantity);
+        double price = coffee.itemPrice();
         coffeeTotal.setText(String.valueOf(df.format(price)));
     }
 
@@ -154,16 +158,17 @@ public class OrderingCoffeeController {
      */
     @FXML
     void whippedSelected(ActionEvent event) {
-        double price = Double.parseDouble(coffeeTotal.getText());
-        if(!whipped.isSelected()) {
-            price -= 0.30;
+        String cupSize = coffeeSize.getSelectionModel().getSelectedItem();
+        Integer quantity = coffeeQuantity.getSelectionModel().getSelectedItem();
+        if(!milk.isSelected()) {
             if(addIns.contains("whipped cream"))
                 addIns.remove("whipped cream");
         }
         else {
-            price += 0.30;
             addIns.add("whipped cream");
         }
+        Coffee coffee = new Coffee(cupSize, addIns, quantity);
+        double price = coffee.itemPrice();
         coffeeTotal.setText(String.valueOf(df.format(price)));
     }
 
