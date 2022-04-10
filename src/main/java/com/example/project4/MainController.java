@@ -10,15 +10,6 @@ import javafx.stage.Stage;
 
 import java.util.ArrayList;
 
-
-/**
- * TO DO:
- * fix null ptr exception for storeOrders
- * javadoc comments
- * system testing
- * remove all print statements, comments
- */
-
 /**
  A GUI class which allows user to select ordering coffee,
  ordering donuts, viewing their basket, and viewing store orders.
