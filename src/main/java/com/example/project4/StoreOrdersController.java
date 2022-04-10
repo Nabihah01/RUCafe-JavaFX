@@ -133,6 +133,9 @@ public class StoreOrdersController {
             Stage stage = new Stage();
             File targetFile = chooser.showSaveDialog(stage);
             PrintWriter pw;
+            if(!targetFile.exists()){
+                targetFile.createNewFile();
+            }
             if(targetFile.canWrite()) {
                 pw = new PrintWriter(targetFile);
                 for(int i = 0; i < mainController.getStoreOrders().getStoreOrdersArray().size(); i++) {
@@ -150,6 +153,7 @@ public class StoreOrdersController {
                 a.setHeaderText("Export Orders");
                 a.setContentText("Cannot write to file. Please try again.");
                 a.show();
+                return;
             }
         }
         catch (Exception e){
@@ -157,6 +161,7 @@ public class StoreOrdersController {
             a.setHeaderText("Export Orders");
             a.setContentText("Cannot export orders. Please try again.");
             a.show();
+            return;
         }
         Alert a = new Alert(Alert.AlertType.CONFIRMATION);
         a.setContentText("All orders have been exported to file");
