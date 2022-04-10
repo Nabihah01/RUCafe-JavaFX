@@ -120,7 +120,7 @@ public class OrderingCoffeeController {
     void caramelSelected(ActionEvent event) {
         String cupSize = coffeeSize.getSelectionModel().getSelectedItem();
         Integer quantity = coffeeQuantity.getSelectionModel().getSelectedItem();
-        if(!milk.isSelected()) {
+        if(!caramel.isSelected()) {
             if(addIns.contains("caramel"))
                 addIns.remove("caramel");
         }
@@ -140,7 +140,7 @@ public class OrderingCoffeeController {
     void syrupSelected(ActionEvent event) {
         String cupSize = coffeeSize.getSelectionModel().getSelectedItem();
         Integer quantity = coffeeQuantity.getSelectionModel().getSelectedItem();
-        if(!milk.isSelected()) {
+        if(!syrup.isSelected()) {
             if(addIns.contains("syrup"))
                 addIns.remove("syrup");
         }
@@ -160,7 +160,7 @@ public class OrderingCoffeeController {
     void whippedSelected(ActionEvent event) {
         String cupSize = coffeeSize.getSelectionModel().getSelectedItem();
         Integer quantity = coffeeQuantity.getSelectionModel().getSelectedItem();
-        if(!milk.isSelected()) {
+        if(!whipped.isSelected()) {
             if(addIns.contains("whipped cream"))
                 addIns.remove("whipped cream");
         }
