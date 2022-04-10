@@ -80,7 +80,7 @@ public class OrderingCoffeeController {
     void creamSelected(ActionEvent event) {
         String cupSize = coffeeSize.getSelectionModel().getSelectedItem();
         Integer quantity = coffeeQuantity.getSelectionModel().getSelectedItem();
-        if(!milk.isSelected()) {
+        if(!cream.isSelected()) {
             if(addIns.contains("cream"))
                 addIns.remove("cream");
         }
